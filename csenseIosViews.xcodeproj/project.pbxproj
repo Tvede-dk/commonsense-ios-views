@@ -18,6 +18,8 @@
 		A7D3CE491FADED8200A8633F /* TableDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D3CE481FADED8200A8633F /* TableDataContainer.swift */; };
 		A7D3CE511FAE8C8C00A8633F /* csenseIosBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D3CE531FAE8C8C00A8633F /* csenseIosBase.framework */; };
 		A7D3CE521FAE8C8C00A8633F /* csenseSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D3CE541FAE8C8C00A8633F /* csenseSwift.framework */; };
+		BC2360CFB6F36C9246BBCE44 /* GenericTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC236C4B868B4F801593E8B9 /* GenericTableItem.swift */; };
+		BC23637B7B0C3729F75C40C5 /* GenericTableItemRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2368CC4ABA5164166DDF62 /* GenericTableItemRender.swift */; };
 		BC236CB7CF179E0DE71C7F36 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2368A24BD10A48F01C5B5B /* UIViewExtensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +49,8 @@
 		A7D3CE531FAE8C8C00A8633F /* csenseIosBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseIosBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D3CE541FAE8C8C00A8633F /* csenseSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC2368A24BD10A48F01C5B5B /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		BC2368CC4ABA5164166DDF62 /* GenericTableItemRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableItemRender.swift; sourceTree = "<group>"; };
+		BC236C4B868B4F801593E8B9 /* GenericTableItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +138,8 @@
 			children = (
 				A7D3CE451FADEC5700A8633F /* SimpleTableView.swift */,
 				A7D3CE481FADED8200A8633F /* TableDataContainer.swift */,
+				BC2368CC4ABA5164166DDF62 /* GenericTableItemRender.swift */,
+				BC236C4B868B4F801593E8B9 /* GenericTableItem.swift */,
 			);
 			path = tableview;
 			sourceTree = "<group>";
@@ -272,6 +278,8 @@
 				A7D3CE491FADED8200A8633F /* TableDataContainer.swift in Sources */,
 				A7D3CE461FADEC5700A8633F /* SimpleTableView.swift in Sources */,
 				BC236CB7CF179E0DE71C7F36 /* UIViewExtensions.swift in Sources */,
+				BC23637B7B0C3729F75C40C5 /* GenericTableItemRender.swift in Sources */,
+				BC2360CFB6F36C9246BBCE44 /* GenericTableItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
