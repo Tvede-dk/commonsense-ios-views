@@ -8,6 +8,7 @@
 
 import Foundation
 import csenseSwift
+
 /**
  * Point of the class
  *
@@ -20,6 +21,8 @@ public class TableDataContainer: NSObject,
         UITableViewDataSource {
 
     public var delegateSelectionAsTab: Bool = true
+
+    public var removeSelectionAfterSelecting = true
 
 
     private var sections: OrderedDictionary<Int, [GenericTableItem]> = OrderedDictionary()
@@ -37,15 +40,15 @@ public class TableDataContainer: NSObject,
     }
 
     public func remove(atRow: Int, inSection: Int) -> GenericTableItem? {
-        var result : GenericTableItem? = nil
+        var result: GenericTableItem? = nil
         updateSection(inSection: inSection, updateFunction: { content in
             result = content.remove(at: atRow)
         })
         return result
     }
 
-    public func removeAll() {
-
+    public func clear() {
+        sections.removeAll()
     }
 
 
@@ -62,6 +65,23 @@ public class TableDataContainer: NSObject,
         return renderItem(tableView: tableView, at: indexPath)
     }
 
+    public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if delegateSelectionAsTab {
+            getSectionRowByIndex(at: indexPath)?.onTappedCalled()
+        }
+        if removeSelectionAfterSelecting {
+            tableView.deselectRow(at: indexPath, animated: true)
+        }
+    }
+
+
+    public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return getSectionRowByIndex(at: indexPath)?.getCustomHeight() ?? UITableViewAutomaticDimension
+    }
+
+    public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return getSectionRowByIndex(at: indexPath)?.getEstimatedHeight() ?? UITableViewAutomaticDimension
+    }
 
     //MARK: rendering and indexing
 
@@ -101,6 +121,9 @@ public protocol GenericTableItem {
     func getNib() -> UINib
     func getReuseIdentifier() -> String
     func renderFor(cell: UITableViewCell)
+    func onTappedCalled()
+    func getEstimatedHeight() -> CGFloat?
+    func getCustomHeight() -> CGFloat?
 }
 
 open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell {
@@ -108,18 +131,28 @@ open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell 
     public init(reuseIdentifier: String,
                 nibName: String,
                 bundle: Bundle? = nil,
-                renderFunction: @escaping  Function<T>) throws {
+                renderFunction: @escaping Function<T>,
+                onTappedFunction: EmptyFunction? = nil,
+                estimatedRowHeightFunction: EmptyFunctionResult<CGFloat>? = nil,
+                rowHeightFunction: EmptyFunctionResult<CGFloat>? = nil) throws {
 
         if nibName.isBlank {
-            throw NSError(domain: "", code: 0)
+            throw NSError(domain: "Bad nib name", code: -200)
         }
 
         self.reuseIdentifier = reuseIdentifier
         self.nibName = nibName
         self.bundle = bundle
         self.renderFunction = renderFunction
+        self.onTappedFunction = onTappedFunction
+        self.estimatedRowHeightFunction = estimatedRowHeightFunction
+        self.rowHeightFunction = rowHeightFunction
     }
 
+    private let estimatedRowHeightFunction: EmptyFunctionResult<CGFloat>?
+    private let rowHeightFunction: EmptyFunctionResult<CGFloat>?
+
+    private let onTappedFunction: EmptyFunction?
     private let reuseIdentifier: String
 
     private let nibName: String
@@ -142,10 +175,28 @@ open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell 
     }
 
     public func renderFor(cell: UITableViewCell) {
-        guard let tCell = cell as? T else {
-            return
-        }
-        renderFor(cell: tCell)
+
+        safeUseCell(cell: cell, action: renderFunction)
+    }
+
+
+    public func onTappedCalled() {
+        onTappedFunction?()
+    }
+
+    public func getEstimatedHeight() -> CGFloat? {
+        return estimatedRowHeightFunction?()
+    }
+
+    public func getCustomHeight() -> CGFloat? {
+        return rowHeightFunction?()
+    }
+    
+    /**
+     * Called from a given cell, tells us that we are to be updated. (we have changed)
+     */
+    public func update(){
+        
     }
 
     /**
@@ -153,6 +204,19 @@ open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell 
      */
     public func renderFor(cell: T) {
         renderFunction(cell)
+        lastCell = cell
     }
+
+    private weak var lastCell : T? = nil
+    
+    //MARK: Helpers
+
+    private func safeUseCell(cell: UITableViewCell, action: Function<T>?) {
+        guard let tCell = cell as? T else {
+            return
+        }
+        action?(tCell)
+    }
+
 
 }

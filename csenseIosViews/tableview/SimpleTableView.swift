@@ -13,11 +13,16 @@ import UIKit
 /**
  * Point of the class
  *
- * x) the tableview cannot deal with partial / sparse array of sections,
+ * x) the tableView cannot deal with partial / sparse array of sections,
   but we want that, so we will translate the sectionIndex ( 0-> count of section) into the given key, using
   an ordered Dictionary (so the keys will be sorted).
- * y) allow a decentralzed design , such that every type of cell can be used in this table;
-    and also that all kinds of manipulations, and animations can be
+ * y) allow a decentralized design , such that every type of cell can be used in this table;
+    and also that all kinds of manipulations.
+
+  * q) also allows to configure regular things like selection / deselection and the behavior hereof.
+
+  * z) also performs so excellent that using a regular tableView with the extreme maintainens-burden, and bad design be default
+        seems like a stupid idea.
  */
 public class SimpleTableView: UITableView {
 
@@ -34,6 +39,7 @@ public class SimpleTableView: UITableView {
     }
 
     private func setup() {
+        //potentially more setup required here.
         hookupDelegates()
     }
 
@@ -44,14 +50,22 @@ public class SimpleTableView: UITableView {
 
 
     //MARK: Options for table
-    var delegateSelectionAsTab: Bool {
+    public var delegateSelectionAsTab: Bool {
         get {
             return data.delegateSelectionAsTab
         }
         set(value) {
             data.delegateSelectionAsTab = value
         }
+    }
 
+    public var removeSelectionAfterSelecting: Bool {
+        get {
+            return data.removeSelectionAfterSelecting
+        }
+        set(value) {
+            data.removeSelectionAfterSelecting = value
+        }
     }
 
 
@@ -78,6 +92,11 @@ public class SimpleTableView: UITableView {
         shouldReload.ifTrue(reloadData)
     }
 
+    public func clear() {
+        data.clear()
+        registeredIdentifiers.removeAll()
+        reloadData()
+    }
 
 
     //MARK: data and nib registration
@@ -87,8 +106,10 @@ public class SimpleTableView: UITableView {
     private func removeNibFromGenericTableItem(item: GenericTableItem) {
         let nib = item.getNib()
         let reuseId = item.getReuseIdentifier()
-        if containsNibAndReuse(nib: nib, reuseId: reuseId){
-            
+        //TODO use ref counting to make sure we only deregister cells that are no longer presented.
+        if containsNibAndReuse(nib: nib, reuseId: reuseId) {
+
+            //register(nil, forCellReuseIdentifier: reuseId)
         }
     }
 
@@ -96,6 +117,7 @@ public class SimpleTableView: UITableView {
         let nib = item.getNib()
         let reuseId = item.getReuseIdentifier()
         if !containsNibAndReuse(nib: nib, reuseId: reuseId) {
+            //TODO use ref counting to inc the counter for every type each time its added.
             addNibAndReuseId(nib: nib, reuseId: reuseId)
             register(nib, forCellReuseIdentifier: reuseId)
         }
