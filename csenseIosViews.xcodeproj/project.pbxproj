@@ -10,6 +10,7 @@
 		A706DE851FAF6E9D003FEAE6 /* TableDataContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A706DE841FAF6E9D003FEAE6 /* TableDataContainerTests.swift */; };
 		A706DE861FAF745E003FEAE6 /* csenseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A706DE871FAF745E003FEAE6 /* csenseTests.framework */; };
 		A788BADC1FB058DE00A52E0F /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = A788BADB1FB058DE00A52E0F /* Cartfile */; };
+		A7B880981FB119DD00D40077 /* BaseTableViewItemRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B880971FB119DD00D40077 /* BaseTableViewItemRender.swift */; };
 		A7D3CDC41FADE61F00A8633F /* csenseIosViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D3CDBA1FADE61E00A8633F /* csenseIosViews.framework */; };
 		A7D3CDC91FADE61F00A8633F /* csenseIosViewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D3CDC81FADE61F00A8633F /* csenseIosViewsTests.swift */; };
 		A7D3CDCB1FADE61F00A8633F /* csenseIosViews.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D3CDBD1FADE61E00A8633F /* csenseIosViews.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -37,6 +38,7 @@
 		A706DE841FAF6E9D003FEAE6 /* TableDataContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataContainerTests.swift; sourceTree = "<group>"; };
 		A706DE871FAF745E003FEAE6 /* csenseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A788BADB1FB058DE00A52E0F /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		A7B880971FB119DD00D40077 /* BaseTableViewItemRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewItemRender.swift; sourceTree = "<group>"; };
 		A7D3CDBA1FADE61E00A8633F /* csenseIosViews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = csenseIosViews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D3CDBD1FADE61E00A8633F /* csenseIosViews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = csenseIosViews.h; sourceTree = "<group>"; };
 		A7D3CDBE1FADE61E00A8633F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 				A7D3CE481FADED8200A8633F /* TableDataContainer.swift */,
 				BC2368CC4ABA5164166DDF62 /* GenericTableItemRender.swift */,
 				BC236C4B868B4F801593E8B9 /* GenericTableItem.swift */,
+				A7B880971FB119DD00D40077 /* BaseTableViewItemRender.swift */,
 			);
 			path = tableview;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				A7D3CE461FADEC5700A8633F /* SimpleTableView.swift in Sources */,
 				BC236CB7CF179E0DE71C7F36 /* UIViewExtensions.swift in Sources */,
 				BC23637B7B0C3729F75C40C5 /* GenericTableItemRender.swift in Sources */,
+				A7B880981FB119DD00D40077 /* BaseTableViewItemRender.swift in Sources */,
 				BC2360CFB6F36C9246BBCE44 /* GenericTableItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,8 +13,8 @@ open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell 
                 bundle: Bundle? = nil,
                 renderFunction: @escaping Function<T>,
                 onTappedFunction: EmptyFunction? = nil,
-                estimatedRowHeightFunction: EmptyFunctionResult<CGFloat>? = nil,
-                rowHeightFunction: EmptyFunctionResult<CGFloat>? = nil) throws {
+                estimatedRowHeightFunction: EmptyFunctionResult<CGFloat?>? = nil,
+                rowHeightFunction: EmptyFunctionResult<CGFloat?>? = nil) throws {
 
         if nibName.isBlank {
             throw NSError(domain: "Bad nib name", code: -200)
@@ -29,8 +29,8 @@ open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell 
         self.rowHeightFunction = rowHeightFunction
     }
 
-    private let estimatedRowHeightFunction: EmptyFunctionResult<CGFloat>?
-    private let rowHeightFunction: EmptyFunctionResult<CGFloat>?
+    private let estimatedRowHeightFunction: EmptyFunctionResult<CGFloat?>?
+    private let rowHeightFunction: EmptyFunctionResult<CGFloat?>?
 
     private let onTappedFunction: EmptyFunction?
     private let reuseIdentifier: String
