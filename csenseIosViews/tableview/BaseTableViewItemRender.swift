@@ -11,7 +11,7 @@ import Foundation
 open class BaseTableViewItemRender<T : UITableViewCell> : GenericTableItemRender<T> {
     
     public init(reuseIdentifier: String, nibName: String, bundle: Bundle?) throws {
-       try super.init(reuseIdentifier: reuseIdentifier,
+       super.init(reuseIdentifier: reuseIdentifier,
                    nibName: nibName,
                    renderFunction: methodPointer(obj:self, method : BaseTableViewItemRender<T>.onRender),
                    onTappedFunction: methodPointer(obj:self, method : BaseTableViewItemRender<T>.onTapped),

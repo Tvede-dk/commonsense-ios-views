@@ -91,6 +91,12 @@ public class SimpleTableView: UITableView {
         //cleanup the registered nibs.
         shouldReload.ifTrue(reloadData)
     }
+    public func remove(atRow : Int, inSection: Int, shouldReload: Bool = false) {
+        let removed: GenericTableItem? = data.remove(atRow: atRow ,inSection: inSection)
+        removed.useSafe(action: removeNibFromGenericTableItem)
+        //cleanup the registered nibs.
+        shouldReload.ifTrue(reloadData)
+    }
 
     public func clear() {
         data.clear()
@@ -99,6 +105,19 @@ public class SimpleTableView: UITableView {
     }
 
 
+    public func set(item: GenericTableItem, inSection: Int, shouldReload: Bool = false) {
+        remove(section: inSection)
+        add(item: item, inSection: inSection, shouldReload : shouldReload)
+    }
+
+    
+    public func set(items: [GenericTableItem], inSection: Int, shouldReload: Bool = false) {
+        remove(section: inSection)
+        add(items: items, inSection: inSection, shouldReload : shouldReload)
+    }
+
+    
+    
     //MARK: data and nib registration
 
     private let data = TableDataContainer()

@@ -14,12 +14,7 @@ open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell 
                 renderFunction: @escaping Function<T>,
                 onTappedFunction: EmptyFunction? = nil,
                 estimatedRowHeightFunction: EmptyFunctionResult<CGFloat?>? = nil,
-                rowHeightFunction: EmptyFunctionResult<CGFloat?>? = nil) throws {
-
-        if nibName.isBlank {
-            throw NSError(domain: "Bad nib name", code: -200)
-        }
-
+                rowHeightFunction: EmptyFunctionResult<CGFloat?>? = nil) {
         self.reuseIdentifier = reuseIdentifier
         self.nibName = nibName
         self.bundle = bundle
