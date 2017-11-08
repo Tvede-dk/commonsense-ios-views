@@ -24,7 +24,7 @@ import UIKit
   * z) also performs so excellent that using a regular tableView with the extreme maintainens-burden, and bad design be default
         seems like a stupid idea.
  */
-public class SimpleTableView: UITableView {
+open class SimpleTableView: UITableView {
 
     //MARK: Init
 
@@ -71,15 +71,18 @@ public class SimpleTableView: UITableView {
 
     //MARK: public functions
 
-    public func add(item: GenericTableItem, inSection: Int, shouldReload: Bool = false) {
-        data.add(item: item, inSection: inSection)
+    public func add(item: GenericTableItem, forSection: Int, shouldReload: Bool = false) {
+        data.add(item: item, forSection: forSection)
         addNibFromGenericTableItem(item: item)
         shouldReload.ifTrue(reloadData)
     }
 
 
-    public func add(items: [GenericTableItem], inSection: Int, shouldReload: Bool = false) {
-        data.add(items: items, inSection: inSection)
+    public func add(items: [GenericTableItem], forSection: Int, shouldReload: Bool = false) {
+        if(items.count==0){
+            return
+        }
+        data.add(items: items, forSection: forSection)
         items.forEach(addNibFromGenericTableItem)
         shouldReload.ifTrue(reloadData)
     }
@@ -91,31 +94,22 @@ public class SimpleTableView: UITableView {
         //cleanup the registered nibs.
         shouldReload.ifTrue(reloadData)
     }
-    public func remove(atRow : Int, inSection: Int, shouldReload: Bool = false) {
-        let removed: GenericTableItem? = data.remove(atRow: atRow ,inSection: inSection)
-        removed.useSafe(action: removeNibFromGenericTableItem)
-        //cleanup the registered nibs.
-        shouldReload.ifTrue(reloadData)
-    }
 
     public func clear() {
         data.clear()
         registeredIdentifiers.removeAll()
         reloadData()
     }
-
-
-    public func set(item: GenericTableItem, inSection: Int, shouldReload: Bool = false) {
-        remove(section: inSection)
-        add(item: item, inSection: inSection, shouldReload : shouldReload)
+    
+    public func set(item: GenericTableItem, forSection: Int, shouldReload: Bool = false) {
+        remove(section: forSection)
+        add(item: item, forSection: forSection, shouldReload : shouldReload)
     }
 
     
-    public func set(items: [GenericTableItem], inSection: Int, shouldReload: Bool = false) {
-        remove(section: inSection)
-        add(items: items, inSection: inSection, shouldReload : shouldReload)
+    public func setHeader(header : GenericTableHeaderItem, forSection : Int){
+        data.setHeader(header, forSection: forSection)
     }
-
     
     
     //MARK: data and nib registration

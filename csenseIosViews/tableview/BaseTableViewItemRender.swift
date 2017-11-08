@@ -10,13 +10,13 @@ import csenseSwift
 import Foundation
 open class BaseTableViewItemRender<T : UITableViewCell> : GenericTableItemRender<T> {
     
-    public init(reuseIdentifier: String, nibName: String, bundle: Bundle?) throws {
+    public init(reuseIdentifier: String, nibName: String, bundle: Bundle?) {
        super.init(reuseIdentifier: reuseIdentifier,
                    nibName: nibName,
                    renderFunction: methodPointer(obj:self, method : BaseTableViewItemRender<T>.onRender),
                    onTappedFunction: methodPointer(obj:self, method : BaseTableViewItemRender<T>.onTapped),
-                   estimatedRowHeightFunction: methodPointer(obj:self, method : BaseTableViewItemRender<T>.onEstimateRowHeight),
-                   rowHeightFunction: methodPointer(obj:self, method : BaseTableViewItemRender<T>.onRowHeight) )
+                   rowHeightFunction: methodPointer(obj:self, method : BaseTableViewItemRender<T>.onRowHeight),
+                   estimatedRowHeightFunction: methodPointer(obj:self, method : BaseTableViewItemRender<T>.onEstimateRowHeight))
         
     }
     

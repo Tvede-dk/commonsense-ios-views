@@ -13,8 +13,8 @@ open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell 
                 bundle: Bundle? = nil,
                 renderFunction: @escaping Function<T>,
                 onTappedFunction: EmptyFunction? = nil,
-                estimatedRowHeightFunction: EmptyFunctionResult<CGFloat?>? = nil,
-                rowHeightFunction: EmptyFunctionResult<CGFloat?>? = nil) {
+                rowHeightFunction: EmptyFunctionResult<CGFloat?>? = nil,
+                estimatedRowHeightFunction: EmptyFunctionResult<CGFloat?>? = nil) {
         self.reuseIdentifier = reuseIdentifier
         self.nibName = nibName
         self.bundle = bundle
@@ -50,7 +50,6 @@ open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell 
     }
 
     public func renderFor(cell: UITableViewCell) {
-
         safeUseCell(cell: cell, action: renderFunction)
     }
 
