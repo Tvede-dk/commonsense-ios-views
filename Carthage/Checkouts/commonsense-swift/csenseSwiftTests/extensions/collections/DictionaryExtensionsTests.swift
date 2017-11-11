@@ -26,11 +26,11 @@ class DictionaryExtensionsTest : XCTestCase {
     
     func testElementByIndex(){
         var tempDict : [Int : [String]] = [:]
-        tempDict.ElementByIndex(index: -20).assertNil(message: "should give nil on out of bounds")
-        tempDict.ElementByIndex(index: 0).assertNil(message: "should give nil on out of bounds")
+        tempDict.elementByIndex(index: -20).assertNil(message: "should give nil on out of bounds")
+        tempDict.elementByIndex(index: 0).assertNil(message: "should give nil on out of bounds")
         tempDict.addOrCreate(key: 1, item: "test")
-        tempDict.ElementByIndex(index: 0).assertNotNil()
-        tempDict.ElementByIndex(index: 100).assertNil(message: "should give nil on out of bounds")
+        tempDict.elementByIndex(index: 0).assertNotNil()
+        tempDict.elementByIndex(index: 100).assertNil(message: "should give nil on out of bounds")
         
     }
     
