@@ -6,18 +6,32 @@
 	objectVersion = 48;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		A7646D301FB9908E0011BBEF /* csenseIosViewsFramework */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = A7646D331FB9908E0011BBEF /* Build configuration list for PBXAggregateTarget "csenseIosViewsFramework" */;
+			buildPhases = (
+				A7646D341FB9909D0011BBEF /* Generate framework */,
+			);
+			dependencies = (
+			);
+			name = csenseIosViewsFramework;
+			productName = csenseIosViewsFramework;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		A706DE851FAF6E9D003FEAE6 /* TableDataContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A706DE841FAF6E9D003FEAE6 /* TableDataContainerTests.swift */; };
 		A706DE861FAF745E003FEAE6 /* csenseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A706DE871FAF745E003FEAE6 /* csenseTests.framework */; };
-		A7646D231FB54FF80011BBEF /* csenseIosBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7646D241FB54FF80011BBEF /* csenseIosBase.framework */; };
 		A788BADC1FB058DE00A52E0F /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = A788BADB1FB058DE00A52E0F /* Cartfile */; };
+		A7ABAE381FC0826300333786 /* csenseIosBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7ABAE3A1FC0826300333786 /* csenseIosBase.framework */; };
+		A7ABAE391FC0826300333786 /* csenseSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7ABAE3B1FC0826300333786 /* csenseSwift.framework */; };
 		A7B880981FB119DD00D40077 /* BaseTableViewItemRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B880971FB119DD00D40077 /* BaseTableViewItemRender.swift */; };
 		A7D3CDC41FADE61F00A8633F /* csenseIosViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D3CDBA1FADE61E00A8633F /* csenseIosViews.framework */; };
 		A7D3CDCB1FADE61F00A8633F /* csenseIosViews.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D3CDBD1FADE61E00A8633F /* csenseIosViews.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D3CE441FADEBF500A8633F /* BaseCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D3CE431FADEBF500A8633F /* BaseCustomView.swift */; };
 		A7D3CE461FADEC5700A8633F /* SimpleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D3CE451FADEC5700A8633F /* SimpleTableView.swift */; };
 		A7D3CE491FADED8200A8633F /* TableDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D3CE481FADED8200A8633F /* TableDataContainer.swift */; };
-		A7D3CE521FAE8C8C00A8633F /* csenseSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D3CE541FAE8C8C00A8633F /* csenseSwift.framework */; };
 		BC2360CFB6F36C9246BBCE44 /* GenericTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC236C4B868B4F801593E8B9 /* GenericTableItem.swift */; };
 		BC23637B7B0C3729F75C40C5 /* GenericTableItemRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2368CC4ABA5164166DDF62 /* GenericTableItemRender.swift */; };
 		BC2363C058F2936E473EB704 /* GenericTableHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC236898DDC7974E1CD1D791 /* GenericTableHeaderItem.swift */; };
@@ -42,6 +56,8 @@
 		A706DE871FAF745E003FEAE6 /* csenseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7646D241FB54FF80011BBEF /* csenseIosBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseIosBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A788BADB1FB058DE00A52E0F /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		A7ABAE3A1FC0826300333786 /* csenseIosBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseIosBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7ABAE3B1FC0826300333786 /* csenseSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7B880971FB119DD00D40077 /* BaseTableViewItemRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewItemRender.swift; sourceTree = "<group>"; };
 		A7D3CDBA1FADE61E00A8633F /* csenseIosViews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = csenseIosViews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D3CDBD1FADE61E00A8633F /* csenseIosViews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = csenseIosViews.h; sourceTree = "<group>"; };
@@ -66,8 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7646D231FB54FF80011BBEF /* csenseIosBase.framework in Frameworks */,
-				A7D3CE521FAE8C8C00A8633F /* csenseSwift.framework in Frameworks */,
+				A7ABAE381FC0826300333786 /* csenseIosBase.framework in Frameworks */,
+				A7ABAE391FC0826300333786 /* csenseSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,6 +174,8 @@
 		A7D3CE501FAE8C8C00A8633F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A7ABAE3A1FC0826300333786 /* csenseIosBase.framework */,
+				A7ABAE3B1FC0826300333786 /* csenseSwift.framework */,
 				A7646D241FB54FF80011BBEF /* csenseIosBase.framework */,
 				A706DE871FAF745E003FEAE6 /* csenseTests.framework */,
 				A7D3CE541FAE8C8C00A8633F /* csenseSwift.framework */,
@@ -234,10 +252,14 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = commonsense;
 				TargetAttributes = {
+					A7646D301FB9908E0011BBEF = {
+						CreatedOnToolsVersion = 9.1;
+						ProvisioningStyle = Automatic;
+					};
 					A7D3CDB91FADE61E00A8633F = {
 						CreatedOnToolsVersion = 9.0.1;
 						LastSwiftMigration = 0900;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 					A7D3CDC21FADE61F00A8633F = {
 						CreatedOnToolsVersion = 9.0.1;
@@ -259,6 +281,7 @@
 			targets = (
 				A7D3CDB91FADE61E00A8633F /* csenseIosViews */,
 				A7D3CDC21FADE61F00A8633F /* csenseIosViewsTests */,
+				A7646D301FB9908E0011BBEF /* csenseIosViewsFramework */,
 			);
 		};
 /* End PBXProject section */
@@ -280,6 +303,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A7646D341FB9909D0011BBEF /* Generate framework */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Generate framework";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/sh\n\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n\n# make sure the output directory exists\n\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n\n# Step 1. Build Device and Simulator versions\n\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build ENABLE_BITCODE=\"YES\"\n\nxcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build ENABLE_BITCODE=\"YES\"\n\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\n\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\n\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\"\n\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\n\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\n\nfi\n\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\n\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n\n# Step 5. Convenience step to copy the framework to the project's directory\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n\n\n# Step 6. Convenience step to open the project's directory in Finder\n\nopen \"${BUILD_DIR}/${CONFIGURATION}-universal\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A7D3CDB51FADE61E00A8633F /* Sources */ = {
@@ -319,6 +359,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		A7646D311FB9908E0011BBEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A7646D321FB9908E0011BBEF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		A7D3CDCC1FADE61F00A8633F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -352,6 +408,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -412,6 +469,7 @@
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -435,13 +493,16 @@
 		A7D3CDCF1FADE61F00A8633F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				BITCODE_GENERATION_MODE = marker;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/Carthage/Build/**";
 				INFOPLIST_FILE = csenseIosViews/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -459,13 +520,16 @@
 		A7D3CDD01FADE61F00A8633F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				BITCODE_GENERATION_MODE = bitcode;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/Carthage/Build/**";
 				INFOPLIST_FILE = csenseIosViews/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -514,6 +578,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		A7646D331FB9908E0011BBEF /* Build configuration list for PBXAggregateTarget "csenseIosViewsFramework" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A7646D311FB9908E0011BBEF /* Debug */,
+				A7646D321FB9908E0011BBEF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		A7D3CDB41FADE61E00A8633F /* Build configuration list for PBXProject "csenseIosViews" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

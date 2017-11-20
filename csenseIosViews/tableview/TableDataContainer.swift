@@ -24,21 +24,25 @@ public class TableDataContainer: NSObject,
 
     public var removeSelectionAfterSelecting = true
 
-    private var headerSections: OrderedDictionary<Int, GenericTableHeaderItem> = OrderedDictionary()
+    private var headerSections: SortedArray<GenericTableHeaderItem> = SortedArray()
 
-    private var sections: OrderedDictionary<Int, [GenericTableItem]> = OrderedDictionary()
+    private var sections: SortedArray<[GenericTableItem]> = SortedArray()
 
     // MARK: items modifiers
     public func add(item: GenericTableItem, forSection: Int) {
-        sections.addOrCreate(key: forSection, item: item)
+        updateSection(forSection: forSection) { items in
+            items += item
+        }
     }
 
     public func add(items: [GenericTableItem], forSection: Int) {
-        sections.addOrCreate(key: forSection, items: items)
+        updateSection(forSection: forSection) { content in
+            content += items
+        }
     }
 
     public func removeItemsIn(section: Int) -> [GenericTableItem] {
-        return sections.removeValue(forKey: section) ?? []
+        return sections.remove(forIndex: section) ?? []
     }
 
     public func removeItem(atRow: Int, forSection: Int) -> GenericTableItem? {
@@ -97,30 +101,28 @@ public class TableDataContainer: NSObject,
     // MARK: rendering and indexing and other for headers.
 
     public func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return headerSections.ElementByIndex(index: section)?.getTitleForHeader()
+        return headerSections.get(forRawIndex: section)?.getTitleForHeader()
     }
 
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return headerSections.ElementByIndex(index: section)?.getHeaderView()
+        return headerSections.get(forRawIndex: section)?.getHeaderView()
     }
 
     public func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
-        return headerSections.ElementByIndex(index: section)?.getEstimatedHeightForHeader()
+        return headerSections.get(forRawIndex: section)?.getEstimatedHeightForHeader()
                 ?? UITableViewAutomaticDimension
     }
 
     public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return headerSections.ElementByIndex(index: section)?.getHeaderHeight() ?? 0
+        return headerSections.get(forRawIndex: section)?.getHeaderHeight() ?? 0
     }
 
     public func setHeader(_ header: GenericTableHeaderItem, forSection: Int) {
-        headerSections.updateValue(header, forKey: forSection)
+        headerSections.set(value: header, forIndex: forSection)
     }
 
     public func removeHeader(forSection: Int) {
-        headerSections.index(forKey: forSection).useSafe { index in
-            headerSections.remove(at: index)
-        }
+        headerSections.remove(forIndex: forSection)
     }
 
     public func clearHeaders() {
@@ -135,17 +137,17 @@ public class TableDataContainer: NSObject,
     }
 
     private func updateSection(forSection: Int, updateFunction: MutatingFunction<[GenericTableItem]>) {
-        var input = sections[forSection] ?? []
+        var input = sections.get(forIndex: forSection) ?? []
         updateFunction(&input)
-        sections.updateValue(input, forKey: forSection)
+        sections.set(value: input, forIndex: forSection)
     }
 
     private func getSectionRowByIndex(at: IndexPath) -> GenericTableItem? {
-        return sections.ElementByIndex(index: at.section)?[at.row]
+        return sections.get(forRawIndex: at.section)?[at.row]
     }
 
     private func getSectionByIndex(index: Int) -> [GenericTableItem] {
-        return sections.ElementByIndex(index: index) ?? []
+        return sections.get(forRawIndex: index) ?? []
     }
 
     private func renderItem(tableView: UITableView, at: IndexPath) -> UITableViewCell {

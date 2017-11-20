@@ -1,0 +1,11 @@
+framework module csenseIosViews {
+  umbrella header "csenseIosViews.h"
+
+  export *
+  module * { export * }
+}
+
+module csenseIosViews.Swift {
+    header "csenseIosViews-Swift.h"
+    requires objc
+}

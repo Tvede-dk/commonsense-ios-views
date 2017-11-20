@@ -7,6 +7,7 @@ import Foundation
 import csenseSwift
 import csenseIosBase
 
+
 public extension UIViewController {
 
     public func dismissAnimated() {
@@ -14,7 +15,7 @@ public extension UIViewController {
     }
 
     public func present(_ viewController: UIViewController?) {
-        guard  let viewController = viewController else {
+        guard let viewController = viewController else {
             logFatal(message: "ViewController to present was nil.")
             return
         }
@@ -36,4 +37,19 @@ public extension UIViewController {
         })
         present(controller)
     }
+
+    public func animateView(duration: CGFloat = UINavigationControllerHideShowBarDuration,
+                            action: @escaping EmptyFunction) {
+        if isVisible {
+            UIView.animate(withDuration: TimeInterval(duration), animations: action)
+        }
+    }
+
+    /**
+     * An estimate, cannot tell special cases
+     */
+    public var isVisible: Bool {
+        return self.isViewLoaded && (self.view.window != nil)
+    }
+
 }

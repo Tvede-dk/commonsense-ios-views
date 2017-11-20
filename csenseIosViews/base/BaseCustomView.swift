@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
-class BaseCustomView  : UIView {
-    
+
+class BaseCustomView: UIView {
+
+
 }
