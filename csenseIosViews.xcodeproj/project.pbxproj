@@ -35,6 +35,7 @@
 		BC2360CFB6F36C9246BBCE44 /* GenericTableItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC236C4B868B4F801593E8B9 /* GenericTableItem.swift */; };
 		BC23637B7B0C3729F75C40C5 /* GenericTableItemRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2368CC4ABA5164166DDF62 /* GenericTableItemRender.swift */; };
 		BC2363C058F2936E473EB704 /* GenericTableHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC236898DDC7974E1CD1D791 /* GenericTableHeaderItem.swift */; };
+		BC2365AA1192B7349F715B46 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23671697191C08B0D98537 /* UIButtonExtensions.swift */; };
 		BC236A14C1A7F3E25EB5A9AE /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC236378156EC70D4CA30395 /* UIViewControllerExtensions.swift */; };
 		BC236A771D25933D7869F078 /* BaseTableViewHeaderItemRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23620D2613FE804C038848 /* BaseTableViewHeaderItemRender.swift */; };
 		BC236C0B31895F460B81B549 /* GenericTableHeaderItemRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC236D957DAC47037FD7F249 /* GenericTableHeaderItemRender.swift */; };
@@ -70,6 +71,7 @@
 		A7D3CE541FAE8C8C00A8633F /* csenseSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC23620D2613FE804C038848 /* BaseTableViewHeaderItemRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeaderItemRender.swift; sourceTree = "<group>"; };
 		BC236378156EC70D4CA30395 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		BC23671697191C08B0D98537 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		BC236898DDC7974E1CD1D791 /* GenericTableHeaderItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableHeaderItem.swift; sourceTree = "<group>"; };
 		BC2368A24BD10A48F01C5B5B /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		BC2368CC4ABA5164166DDF62 /* GenericTableItemRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableItemRender.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 			children = (
 				BC2368A24BD10A48F01C5B5B /* UIViewExtensions.swift */,
 				BC236378156EC70D4CA30395 /* UIViewControllerExtensions.swift */,
+				BC23671697191C08B0D98537 /* UIButtonExtensions.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -337,6 +340,7 @@
 				BC2363C058F2936E473EB704 /* GenericTableHeaderItem.swift in Sources */,
 				BC236A771D25933D7869F078 /* BaseTableViewHeaderItemRender.swift in Sources */,
 				BC236A14C1A7F3E25EB5A9AE /* UIViewControllerExtensions.swift in Sources */,
+				BC2365AA1192B7349F715B46 /* UIButtonExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
