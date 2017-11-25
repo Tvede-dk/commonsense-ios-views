@@ -53,7 +53,6 @@ open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell 
         safeUseCell(cell: cell, action: renderFunction)
     }
 
-
     public func onTappedCalled() {
         onTappedFunction?()
     }
@@ -69,14 +68,15 @@ open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell 
     /**
      * Called from a given cell, tells us that we are to be updated. (we have changed)
      */
-    public func update(){
+    public func update() {
         updateFunction?()
     }
 
     public func setUpdateFunction(callback: @escaping EmptyFunction) {
         updateFunction = callback
     }
-    private var updateFunction : EmptyFunction? = nil
+
+    private var updateFunction: EmptyFunction? = nil
 
     /**
      *
@@ -85,7 +85,7 @@ open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell 
         renderFunction(cell)
     }
 
-    //MARK: Helpers
+    // MARK: Helpers
 
     private func safeUseCell(cell: UITableViewCell, action: Function<T>?) {
         guard let tCell = cell as? T else {
@@ -93,7 +93,5 @@ open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell 
         }
         action?(tCell)
     }
-
-
 
 }

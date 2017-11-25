@@ -4,9 +4,10 @@
 //
 
 import Foundation
+
 @IBDesignable
 public extension UIButton {
-    @IBInspectable
+    /*@IBInspectable
     var title: String {
         get {
             return currentTitle ?? ""
@@ -14,5 +15,5 @@ public extension UIButton {
         set(newTitle) {
             setTitle(newTitle, for: .normal)
         }
-    }
+    }*/
 }

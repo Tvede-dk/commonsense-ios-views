@@ -46,7 +46,7 @@ public extension UIViewController {
     }
 
     /**
-     * An estimate, cannot tell special cases
+     * An estimate, cannot tell special cases.
      */
     public var isVisible: Bool {
         return self.isViewLoaded && (self.view.window != nil)
