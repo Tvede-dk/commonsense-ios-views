@@ -5,18 +5,36 @@
 
 import Foundation
 
+public extension Optional where Wrapped == String {
 
-extension Optional where Wrapped == String {
-
+    /**
+     *Returns true iff the string is nil or if it is blank (only consisting of whitespace).
+     */
+    public var isNilOrBlank: Bool {
+        return self?.isBlank != false
+    }
 }
 
-extension String {
+public extension String {
+    /**
+     * returns true iff the string is not empty (contains something)
+     */
+    public var isNotEmpty: Bool {
+        return !isEmpty
+    }
 
+    /**
+     * tells if the string only contains whitespace characters, if not then this is false
+     */
     public var isBlank: Bool {
-        get {
-            return self == ""
-                    || self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
-        }
+        return self == "" || self.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines).isEmpty
+    }
+
+    /**
+     * Url encodes a string, such that it can be used as parameters (eg query strings ect).
+     */
+    public func urlEncoded() -> String? {
+        return self.addingPercentEncoding(withAllowedCharacters: .urlFragmentAllowed)
     }
 
 }

@@ -26,6 +26,10 @@ import UIKit
  */
 open class SimpleTableView: UITableView {
 
+    private let nibRegistrator: NibRegistrator = NibRegistrator()
+
+    private let data = TableDataContainer()
+
     //MARK: Init
 
     public override init(frame: CGRect, style: UITableViewStyle) {
@@ -79,7 +83,7 @@ open class SimpleTableView: UITableView {
 
 
     public func add(items: [GenericTableItem], forSection: Int, shouldReload: Bool = false) {
-        if(items.count==0){
+        if (items.count == 0) {
             return
         }
         data.add(items: items, forSection: forSection)
@@ -97,58 +101,39 @@ open class SimpleTableView: UITableView {
 
     public func clear() {
         data.clear()
-        registeredIdentifiers.removeAll()
+        nibRegistrator.clear()
         reloadData()
     }
-    
+
     public func set(item: GenericTableItem, forSection: Int, shouldReload: Bool = false) {
         remove(section: forSection)
-        add(item: item, forSection: forSection, shouldReload : shouldReload)
+        add(item: item, forSection: forSection, shouldReload: shouldReload)
     }
 
-    
-    public func setHeader(header : GenericTableHeaderItem, forSection : Int){
+    public func set(items: [GenericTableItem], forSection: Int, shouldReload: Bool = false) {
+        remove(section: forSection)
+        add(items: items, forSection: forSection, shouldReload: shouldReload)
+    }
+
+
+    public func setHeader(header: GenericTableHeaderItem, forSection: Int) {
         data.setHeader(header, forSection: forSection)
     }
-    
-    
+
+
     //MARK: data and nib registration
 
-    private let data = TableDataContainer()
 
     private func removeNibFromGenericTableItem(item: GenericTableItem) {
         let nib = item.getNib()
         let reuseId = item.getReuseIdentifier()
-        //TODO use ref counting to make sure we only deregister cells that are no longer presented.
-        if containsNibAndReuse(nib: nib, reuseId: reuseId) {
-
-            //register(nil, forCellReuseIdentifier: reuseId)
-        }
+        nibRegistrator.removeNib(nib: nib, reuseId: reuseId, tableView: self)
     }
 
     private func addNibFromGenericTableItem(item: GenericTableItem) {
         let nib = item.getNib()
         let reuseId = item.getReuseIdentifier()
-        if !containsNibAndReuse(nib: nib, reuseId: reuseId) {
-            //TODO use ref counting to inc the counter for every type each time its added.
-            addNibAndReuseId(nib: nib, reuseId: reuseId)
-            register(nib, forCellReuseIdentifier: reuseId)
-        }
-    }
-
-    private var registeredIdentifiers: Set<String> = Set()
-
-
-    private func containsNibAndReuse(nib: UINib, reuseId: String) -> Bool {
-        return registeredIdentifiers.contains(reuseId)
-    }
-
-    private func addNibAndReuseId(nib: UINib, reuseId: String) {
-        registeredIdentifiers.update(with: reuseId)
-    }
-
-    private func removeNibAndReuseId(nib: UINib, reuseId: String) {
-        registeredIdentifiers.remove(reuseId)
+        nibRegistrator.addNib(nib: nib, reuseId: reuseId, tableView: self)
     }
 
 

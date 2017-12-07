@@ -13,5 +13,5 @@ public protocol GenericTableItem {
     func onTappedCalled()
     func getEstimatedHeight() -> CGFloat?
     func getCustomHeight() -> CGFloat?
-    func setUpdateFunction(callback:@escaping EmptyFunction) -> Void
+    func setUpdateFunction(callback:@escaping EmptyFunction)
 }

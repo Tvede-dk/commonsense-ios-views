@@ -9,19 +9,25 @@
 import Foundation
 
 public extension Optional {
+
     /**
      * Uses the value iff safe (not nil)
      */
-    public func ifNotNil(action : Function<Wrapped>){
+    @discardableResult
+    public func ifNotNil<T>(action: FunctionResult<Wrapped, T?>) -> T? {
         if let safeSelf = self {
-            action(safeSelf)
+            return action(safeSelf)
         }
+        return nil
     }
+
     /**
      * Another name for "iFNotNil"
      */
-    public func useSafe(action : Function<Wrapped>){
-        ifNotNil(action: action)
+
+    @discardableResult
+    public func useSafe<T>(action: FunctionResult<Wrapped, T?>) -> T? {
+        return ifNotNil(action: action)
     }
-    
+
 }

@@ -25,19 +25,21 @@
 		A706DE861FAF745E003FEAE6 /* csenseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A706DE871FAF745E003FEAE6 /* csenseTests.framework */; };
 		A72802821FCA2492004BDC8A /* NibableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72802811FCA2492004BDC8A /* NibableView.swift */; };
 		A72802841FCA2497004BDC8A /* NibLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72802831FCA2497004BDC8A /* NibLoader.swift */; };
-		A788BADC1FB058DE00A52E0F /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = A788BADB1FB058DE00A52E0F /* Cartfile */; };
+		A72802861FCC170A004BDC8A /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72802851FCC170A004BDC8A /* UITableViewExtensions.swift */; };
 		A7D3CDC41FADE61F00A8633F /* csenseIosViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D3CDBA1FADE61E00A8633F /* csenseIosViews.framework */; };
 		A7D3CDCB1FADE61F00A8633F /* csenseIosViews.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D3CDBD1FADE61E00A8633F /* csenseIosViews.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D3CE441FADEBF500A8633F /* BaseNibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D3CE431FADEBF500A8633F /* BaseNibView.swift */; };
 		A7D3CE461FADEC5700A8633F /* SimpleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D3CE451FADEC5700A8633F /* SimpleTableView.swift */; };
 		A7D3CE491FADED8200A8633F /* TableDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D3CE481FADED8200A8633F /* TableDataContainer.swift */; };
-		A7D7F6D51FC80C760037E16E /* csenseIosBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D7F6D71FC80C760037E16E /* csenseIosBase.framework */; };
-		A7D7F6D61FC80C760037E16E /* csenseSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D7F6D81FC80C760037E16E /* csenseSwift.framework */; };
+		A7F7F6141FD572BA0095B2EE /* csenseIosBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F7F6161FD572BA0095B2EE /* csenseIosBase.framework */; };
+		A7F7F6151FD572BA0095B2EE /* csenseSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F7F6171FD572BA0095B2EE /* csenseSwift.framework */; };
 		BC23630F8F6A19A5035E301D /* GenericTableItemRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC236443CFF76F7E23640F62 /* GenericTableItemRender.swift */; };
+		BC236419B5CBDE8957F80ECB /* RenderIntegrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23668FBCDE4A0FF1E18033 /* RenderIntegrations.swift */; };
 		BC23648778EC760C7D0338C5 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC236424A6162C26150DBA07 /* UILabelExtensions.swift */; };
 		BC23654032DD09EDC85DC1E4 /* GenericTableHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2367FD51359F19CB02D447 /* GenericTableHeaderItem.swift */; };
 		BC2365AA1192B7349F715B46 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23671697191C08B0D98537 /* UIButtonExtensions.swift */; };
 		BC2367FC9D3FA2B867EDE893 /* GenericTableHeaderItemRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2362749F5E8CA4E9445438 /* GenericTableHeaderItemRender.swift */; };
+		BC23692B80A59BA02A03B287 /* NibRegistrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2361FB9FE3F4D09CCD82D6 /* NibRegistrator.swift */; };
 		BC236A14C1A7F3E25EB5A9AE /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC236378156EC70D4CA30395 /* UIViewControllerExtensions.swift */; };
 		BC236C17C551432CC6071064 /* SpacerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC2368FA159A6935E8B12B34 /* SpacerTableViewCell.xib */; };
 		BC236C4A69A39D4DA7AC5873 /* SpacerTableViewCellRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23673C788364087F1982B2 /* SpacerTableViewCellRender.swift */; };
@@ -62,6 +64,7 @@
 		A706DE871FAF745E003FEAE6 /* csenseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72802811FCA2492004BDC8A /* NibableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibableView.swift; sourceTree = "<group>"; };
 		A72802831FCA2497004BDC8A /* NibLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoader.swift; sourceTree = "<group>"; };
+		A72802851FCC170A004BDC8A /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
 		A7646D241FB54FF80011BBEF /* csenseIosBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseIosBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A788BADB1FB058DE00A52E0F /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		A7ABAE3A1FC0826300333786 /* csenseIosBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseIosBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,11 +80,15 @@
 		A7D3CE541FAE8C8C00A8633F /* csenseSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D7F6D71FC80C760037E16E /* csenseIosBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseIosBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D7F6D81FC80C760037E16E /* csenseSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7F7F6161FD572BA0095B2EE /* csenseIosBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseIosBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7F7F6171FD572BA0095B2EE /* csenseSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC2361FB9FE3F4D09CCD82D6 /* NibRegistrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibRegistrator.swift; sourceTree = "<group>"; };
 		BC2362749F5E8CA4E9445438 /* GenericTableHeaderItemRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableHeaderItemRender.swift; sourceTree = "<group>"; };
 		BC236378156EC70D4CA30395 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		BC236424A6162C26150DBA07 /* UILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelExtensions.swift; sourceTree = "<group>"; };
 		BC236443CFF76F7E23640F62 /* GenericTableItemRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableItemRender.swift; sourceTree = "<group>"; };
 		BC23649BE47E3413D0D46A7F /* BaseTableViewHeaderItemRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewHeaderItemRender.swift; sourceTree = "<group>"; };
+		BC23668FBCDE4A0FF1E18033 /* RenderIntegrations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderIntegrations.swift; sourceTree = "<group>"; };
 		BC23671697191C08B0D98537 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		BC23673C788364087F1982B2 /* SpacerTableViewCellRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpacerTableViewCellRender.swift; sourceTree = "<group>"; };
 		BC2367E701C5210A6139CE43 /* GenericTableItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableItem.swift; sourceTree = "<group>"; };
@@ -96,8 +103,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7D7F6D51FC80C760037E16E /* csenseIosBase.framework in Frameworks */,
-				A7D7F6D61FC80C760037E16E /* csenseSwift.framework in Frameworks */,
+				A7F7F6141FD572BA0095B2EE /* csenseIosBase.framework in Frameworks */,
+				A7F7F6151FD572BA0095B2EE /* csenseSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -181,6 +188,8 @@
 				BC236AA80291ECD46928CFA6 /* items */,
 				BC2368BD6C199962ADB9D9F2 /* footer */,
 				BC2362031772CAC05A6226D1 /* commonItems */,
+				BC23668FBCDE4A0FF1E18033 /* RenderIntegrations.swift */,
+				BC2361FB9FE3F4D09CCD82D6 /* NibRegistrator.swift */,
 			);
 			path = tableview;
 			sourceTree = "<group>";
@@ -188,6 +197,8 @@
 		A7D3CE501FAE8C8C00A8633F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A7F7F6161FD572BA0095B2EE /* csenseIosBase.framework */,
+				A7F7F6171FD572BA0095B2EE /* csenseSwift.framework */,
 				A7D7F6D71FC80C760037E16E /* csenseIosBase.framework */,
 				A7D7F6D81FC80C760037E16E /* csenseSwift.framework */,
 				A7ABAE3A1FC0826300333786 /* csenseIosBase.framework */,
@@ -242,6 +253,7 @@
 				BC236378156EC70D4CA30395 /* UIViewControllerExtensions.swift */,
 				BC23671697191C08B0D98537 /* UIButtonExtensions.swift */,
 				BC236424A6162C26150DBA07 /* UILabelExtensions.swift */,
+				A72802851FCC170A004BDC8A /* UITableViewExtensions.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -345,7 +357,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A788BADC1FB058DE00A52E0F /* Cartfile in Resources */,
 				BC236C17C551432CC6071064 /* SpacerTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,7 +383,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/sh\n\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n\n# make sure the output directory exists\n\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n\n# Step 1. Build Device and Simulator versions\n\nxcodebuild -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build ENABLE_BITCODE=\"YES\"\n\nxcodebuild -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build ENABLE_BITCODE=\"YES\"\n\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\n\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\n\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\"\n\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\n\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\n\nfi\n\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\n\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n\n# Step 5. Convenience step to copy the framework to the project's directory\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n\n\n# Step 6. Convenience step to open the project's directory in Finder\n\nopen \"${BUILD_DIR}/${CONFIGURATION}-universal\"";
+			shellScript = "#!/bin/sh\n\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n\n# make sure the output directory exists\n\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n\n# Step 1. Build Device and Simulator versions\n\nxcodebuild BITCODE_GENERATION_MODE=bitcode OTHER_CFLAGS=\"-fembed-bitcode\" -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build OTHER_LDFLAGS=\"-ObjC -fembed-bitcode\"\n\nxcodebuild BITCODE_GENERATION_MODE=bitcode OTHER_CFLAGS=\"-fembed-bitcode-marker\" -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build OTHER_LDFLAGS=\"-ObjC\"\n\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\n\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\n\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\"\n\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\n\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\n\nfi\n\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\n\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n\n# Step 5. Convenience step to copy the framework to the project's directory\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n\n\n# Step 6. Convenience step to open the project's directory in Finder\n\nopen \"${BUILD_DIR}/${CONFIGURATION}-universal\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -387,6 +398,7 @@
 				BC236CB7CF179E0DE71C7F36 /* UIViewExtensions.swift in Sources */,
 				BC236A14C1A7F3E25EB5A9AE /* UIViewControllerExtensions.swift in Sources */,
 				BC2365AA1192B7349F715B46 /* UIButtonExtensions.swift in Sources */,
+				A72802861FCC170A004BDC8A /* UITableViewExtensions.swift in Sources */,
 				BC23648778EC760C7D0338C5 /* UILabelExtensions.swift in Sources */,
 				BC236D7957A6737D253C51FB /* BaseTableViewHeaderItemRender.swift in Sources */,
 				BC236D8047C23D869164D59F /* BaseTableViewItemRender.swift in Sources */,
@@ -397,6 +409,8 @@
 				BC23630F8F6A19A5035E301D /* GenericTableItemRender.swift in Sources */,
 				BC236C8451F6ECB55B1F8026 /* GenericTableItem.swift in Sources */,
 				BC236C4A69A39D4DA7AC5873 /* SpacerTableViewCellRender.swift in Sources */,
+				BC236419B5CBDE8957F80ECB /* RenderIntegrations.swift in Sources */,
+				BC23692B80A59BA02A03B287 /* NibRegistrator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,7 +499,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -540,7 +554,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -562,11 +576,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/Carthage/Build/**";
 				INFOPLIST_FILE = csenseIosViews/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.commonsense.csenseIosViews;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -589,11 +602,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_BITCODE = NO;
+				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/Carthage/Build/**";
 				INFOPLIST_FILE = csenseIosViews/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.commonsense.csenseIosViews;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";

@@ -7,7 +7,20 @@
 //
 
 import Foundation
+import csenseIosBase
 import csenseSwift
+
+
+/**
+ * Describes an update performed on a table, so for example if just inserting 1 element then
+ * the inserted will contain that path.
+ *
+ */
+public struct TableDataContainerUpdate {
+    public let inserted: [IndexPath]
+    public let updated: [IndexPath]
+    public let removed: [IndexPath]
+}
 
 /**
  * Point of the class
@@ -23,6 +36,17 @@ public class TableDataContainer: NSObject,
     public var delegateSelectionAsTab: Bool = true
 
     public var removeSelectionAfterSelecting = true
+
+    /**
+     * This controls whenever we should crash on bad cells , eg if stuff is really broken
+     */
+    public var shouldCrashOnBadCell = false
+
+    /**
+     * if the shouldCrashOnBadCell is false,
+     *  then if this is set to not nil, this will be runned on each "bad" / broken cell
+     */
+    public var optionalBadCellRender: FunctionResult<UITableView, UITableViewCell>? = nil
 
     private var headerSections: SortedArray<GenericTableHeaderItem> = SortedArray()
 
@@ -131,9 +155,17 @@ public class TableDataContainer: NSObject,
 
     // MARK: rendering and indexing - for items in sections
 
-    private func getBadTableViewCell() -> UITableViewCell {
-        //TODO log this, and or be able to configure this into a crash.
-        return UITableViewCell()
+    private func getBadTableViewCell(tableView: UITableView, at: IndexPath) -> UITableViewCell {
+        Logger.shared.logWarning(message: "Bad cell tried to be render at indexPath:\(at)")
+        if (shouldCrashOnBadCell) {
+            fatalError("Crashing on bad ui cell, the cell you tried to display was broken;" +
+                    " indexPath is: \(at)")
+        }
+        if let render = optionalBadCellRender {
+            return render(tableView)
+        } else {
+            return UITableViewCell()
+        }
     }
 
     private func updateSection(forSection: Int, updateFunction: MutatingFunction<[GenericTableItem]>) {
@@ -153,7 +185,7 @@ public class TableDataContainer: NSObject,
     private func renderItem(tableView: UITableView, at: IndexPath) -> UITableViewCell {
         let optItem = getSectionRowByIndex(at: at)
         guard let safeItem = optItem else {
-            return getBadTableViewCell()
+            return getBadTableViewCell(tableView: tableView, at: at)
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: safeItem.getReuseIdentifier(),
                 for: at)
