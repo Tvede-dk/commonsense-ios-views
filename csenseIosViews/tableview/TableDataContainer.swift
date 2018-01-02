@@ -153,6 +153,14 @@ public class TableDataContainer: NSObject,
         headerSections.removeAll()
     }
 
+    public func size(forSection: Int) -> Int {
+        return sections.get(forIndex: forSection)?.count ?? 0
+    }
+
+    public func getRawSection(forSection: Int) -> Int? {
+        return sections.rawIndexOf(forIndex: forSection)
+    }
+
     // MARK: rendering and indexing - for items in sections
 
     private func getBadTableViewCell(tableView: UITableView, at: IndexPath) -> UITableViewCell {

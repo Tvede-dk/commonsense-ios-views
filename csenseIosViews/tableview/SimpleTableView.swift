@@ -76,9 +76,16 @@ open class SimpleTableView: UITableView {
     //MARK: public functions
 
     public func add(item: GenericTableItem, forSection: Int, shouldReload: Bool = false) {
+        let prevSize = data.size(forSection: forSection)
         data.add(item: item, forSection: forSection)
+
         addNibFromGenericTableItem(item: item)
-        shouldReload.ifTrue(reloadData)
+
+        shouldReload.ifTrue{
+            if let rawSection = data.getRawSection(forSection: forSection) {
+                reloadRows(at: [IndexPath(row: prevSize, section: rawSection - 1 )], with: .automatic)
+            }
+        }
     }
 
 
