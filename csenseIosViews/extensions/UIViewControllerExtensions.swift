@@ -7,7 +7,6 @@ import Foundation
 import csenseSwift
 import csenseIosBase
 
-
 public extension UIViewController {
 
     public func dismissAnimated() {

@@ -67,7 +67,6 @@ public class ArrayExtensionsTests: XCTestCase {
         emptyArr += [20]
         emptyArr.assertCount(1)
 
-
     }
 
     func testInsertOrUpdate() {

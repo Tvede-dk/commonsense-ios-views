@@ -10,10 +10,10 @@ import csenseSwift
 import Foundation
 import UIKit
 
-open class GenericTableHeaderItemRender: GenericTableHeaderItem  {
-    
-    public init( titleFunction : EmptyFunctionResult<String?>?,
-                 viewFunction  : EmptyFunctionResult<UIView?>?,
+open class GenericTableHeaderItemRender: GenericTableHeaderItem {
+
+    public init( titleFunction: EmptyFunctionResult<String?>?,
+                 viewFunction: EmptyFunctionResult<UIView?>?,
                  rowHeightFunction: EmptyFunctionResult<CGFloat?>? = nil,
                  estimatedRowHeightFunction: EmptyFunctionResult<CGFloat?>? = nil ) {
         self.estimatedRowHeightFunction = estimatedRowHeightFunction
@@ -21,26 +21,24 @@ open class GenericTableHeaderItemRender: GenericTableHeaderItem  {
         self.getTitleFunction = titleFunction
         self.getViewFunction = viewFunction
     }
-    
-    
-    private let getTitleFunction : EmptyFunctionResult<String?>?
-    private let getViewFunction  : EmptyFunctionResult<UIView?>?
+
+    private let getTitleFunction: EmptyFunctionResult<String?>?
+    private let getViewFunction: EmptyFunctionResult<UIView?>?
     private let estimatedRowHeightFunction: EmptyFunctionResult<CGFloat?>?
     private let rowHeightFunction: EmptyFunctionResult<CGFloat?>?
-    
-    
+
     public func getHeaderHeight() -> CGFloat? {
         return rowHeightFunction?()
     }
-    
+
     public func getHeaderView() -> UIView? {
         return getViewFunction?()
     }
-    
+
     public func getEstimatedHeightForHeader() -> CGFloat? {
         return estimatedRowHeightFunction?()
     }
-    
+
     public func getTitleForHeader() -> String? {
         return getTitleFunction?()
     }

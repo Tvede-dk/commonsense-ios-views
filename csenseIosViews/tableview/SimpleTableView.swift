@@ -26,11 +26,18 @@ import UIKit
  */
 open class SimpleTableView: UITableView {
 
+    // MARK: class properties / exposed
+    public var insertionAnimation: UITableViewRowAnimation = UITableViewRowAnimation.automatic
+
+    public var deletionAnimation: UITableViewRowAnimation = UITableViewRowAnimation.automatic
+
+    public var reloadingAnimation: UITableViewRowAnimation = UITableViewRowAnimation.automatic
+
     private let nibRegistrator: NibRegistrator = NibRegistrator()
 
     private let data = TableDataContainer()
 
-    //MARK: Init
+    // MARK: Init
 
     public override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
@@ -52,8 +59,7 @@ open class SimpleTableView: UITableView {
         delegate = data
     }
 
-
-    //MARK: Options for table
+    // MARK: Options for table
     public var delegateSelectionAsTab: Bool {
         get {
             return data.delegateSelectionAsTab
@@ -72,64 +78,81 @@ open class SimpleTableView: UITableView {
         }
     }
 
+    // MARK: public functions
 
-    //MARK: public functions
-
-    public func add(item: GenericTableItem, forSection: Int, shouldReload: Bool = false) {
-        let prevSize = data.size(forSection: forSection)
-        data.add(item: item, forSection: forSection)
-
+    public func add(item: GenericTableItem, forSection: Int) {
         addNibFromGenericTableItem(item: item)
-
-        shouldReload.ifTrue{
-            if let rawSection = data.getRawSection(forSection: forSection) {
-                reloadRows(at: [IndexPath(row: prevSize, section: rawSection - 1 )], with: .automatic)
-            }
-        }
+        applyResultUpdate(update: data.add(item: item, forSection: forSection))
     }
 
+    /**
+     * retrives the size of a section, given the section key (not raw index)
+     * the "numberOf inSections" is the ios version, using raw indexes.
+     */
+    public func sizeOfSection(forSection: Int) -> Int {
+        return data.size(forSection: forSection)
+    }
 
-    public func add(items: [GenericTableItem], forSection: Int, shouldReload: Bool = false) {
-        if (items.count == 0) {
+    public func add(items: [GenericTableItem], forSection: Int) {
+        if items.isEmpty {
             return
         }
-        data.add(items: items, forSection: forSection)
         items.forEach(addNibFromGenericTableItem)
-        shouldReload.ifTrue(reloadData)
+        applyResultUpdate(update: data.add(items: items, forSection: forSection))
     }
 
-
-    public func remove(section: Int, shouldReload: Bool = false) {
-        let removed: [GenericTableItem] = data.remove(section: section)
-        removed.forEach(removeNibFromGenericTableItem)
-        //cleanup the registered nibs.
-        shouldReload.ifTrue(reloadData)
+    public func remove(section: Int) {
+        let removed = data.remove(section: section)
+        removed.items.forEach(removeNibFromGenericTableItem)
+        removed.rawSectionIndex.useSafe { (rawSection: Int) in
+            deleteSections(IndexSet(integer: rawSection), with: deletionAnimation)
+        }
     }
 
     public func clear() {
+        let sectionIndexes = IndexSet(0 ... numberOfSections - 1)
         data.clear()
         nibRegistrator.clear()
-        reloadData()
+        deleteSections(sectionIndexes, with: deletionAnimation)
     }
 
-    public func set(item: GenericTableItem, forSection: Int, shouldReload: Bool = false) {
-        remove(section: forSection)
-        add(item: item, forSection: forSection, shouldReload: shouldReload)
+    public func set(item: GenericTableItem, forSection: Int) {
+        set(items: [item], forSection: forSection)
     }
 
-    public func set(items: [GenericTableItem], forSection: Int, shouldReload: Bool = false) {
-        remove(section: forSection)
-        add(items: items, forSection: forSection, shouldReload: shouldReload)
+    public func set(items: [GenericTableItem], forSection: Int) {
+       let update = data.setSection(items: items, forSection: forSection)
+        //if the deleIndex is set, then we are deleting the section
+        update.deleteIndex.useSafe { (value)  in
+            deleteSections(IndexSet(integer: value), with: deletionAnimation)
+        }
+        //alternative, there are "updates"
+        applyResultUpdate(update: update.result)
     }
-
 
     public func setHeader(header: GenericTableHeaderItem, forSection: Int) {
         data.setHeader(header, forSection: forSection)
     }
 
+    /*public func setFooter(footer : GenericTableHeaderItem, forSection: Int){
+        data.setFooter(footer, forSection: forSection)
+    }*/
 
-    //MARK: data and nib registration
+    // MARK: data and nib registration
 
+    private func applyResultUpdate(update: TableDataContainerUpdate) {
+        beginUpdates()
+        if update.removed.isNotEmpty {
+            deleteRows(at: update.removed, with: deletionAnimation)
+        }
+        if update.inserted.isNotEmpty {
+            insertRows(at: update.inserted, with: insertionAnimation)
+        }
+        if update.updated.isNotEmpty {
+            reloadRows(at: update.updated, with: reloadingAnimation)
+        }
+        endUpdates()
+    }
 
     private func removeNibFromGenericTableItem(item: GenericTableItem) {
         let nib = item.getNib()
@@ -142,6 +165,5 @@ open class SimpleTableView: UITableView {
         let reuseId = item.getReuseIdentifier()
         nibRegistrator.addNib(nib: nib, reuseId: reuseId, tableView: self)
     }
-
 
 }

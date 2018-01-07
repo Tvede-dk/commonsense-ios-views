@@ -14,11 +14,11 @@ class GeneralExtensionsTests: XCTestCase {
     }
 
     func testIfNotNil() {
-        var temp : String? = nil
+        var temp: String? = nil
         temp.ifNotNil { _ in
             failTests("should not be called on nil")
         }
-        
+
         temp = "magic"
         let exp1 = expectation(description: "should call callback")
         temp.ifNotNil { str in
@@ -29,10 +29,10 @@ class GeneralExtensionsTests: XCTestCase {
     }
 
     func testValueOr() {
-        var temp : String? = nil
+        var temp: String? = nil
         temp.valueOr("test").assert("test")
         temp = "1234"
         temp.valueOr("no").assert("1234")
-        
+
     }
 }

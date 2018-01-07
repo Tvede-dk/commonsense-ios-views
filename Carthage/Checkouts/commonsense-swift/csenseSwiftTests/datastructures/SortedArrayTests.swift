@@ -42,5 +42,24 @@ class SortedArrayTests: XCTestCase {
         array.get(forRawIndex: 1).assertNotNilEquals("test2")
         array.get(forRawIndex: 0).assertNotNilEquals("test4")
         array.count.assert(2)
+
+        array.removeAll()
+        array.count.assert(0, message: "should have nothing left")
+    }
+
+    func testEquatable() {
+        let sortedA = SortedArray<Int>()
+        let sortedB = SortedArray<Int>()
+
+        (sortedA == sortedB).assert(true, message: "empty == empty")
+        sortedA.set(value: 20, forIndex: 0)
+        (sortedA == sortedB).assert(false, message: "(20)== ()")
+        sortedB.set(value: 10, forIndex: 2)
+        (sortedA == sortedB).assert(false, message: "(20)== (10)")
+        sortedB.set(value: 20, forIndex: 0)
+        (sortedA == sortedB).assert(false, message: "(20)== (10,20)")
+        sortedA.set(value: 10, forIndex: 2)
+        (sortedA == sortedB).assert(true, message: "(10,20)== (10,20)")
+
     }
 }

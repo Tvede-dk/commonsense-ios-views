@@ -9,12 +9,12 @@
 import Foundation
 import csenseSwift
 public class NibLoader {
-    
+
     ///Guard variable handling the fact that awakeAfter calls down and that further trigers a 3 call down (calls are out of control). so we guard.
     private var didAwakeCallDown = false
-    public func awakeAfter<T>(withNib : UINib, callerSelf : T ) -> T? where T : UIView {
+    public func awakeAfter<T>(withNib: UINib, callerSelf: T ) -> T? where T: UIView {
         //Guard && handle if we are creating subrecursivly.
-        if didAwakeCallDown ||  isCalledRecursive(type : T.self) {
+        if didAwakeCallDown ||  isCalledRecursive(type: T.self) {
             return callerSelf
         }
         //Guard

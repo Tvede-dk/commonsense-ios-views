@@ -8,9 +8,7 @@ import csenseSwift
 
 public class NibRegistrator {
 
-
-    private var registeredIdentifiers: [String : Int] = [:]
-
+    private var registeredIdentifiers: [String: Int] = [:]
 
     public func addNib(nib: UINib, reuseId: String, tableView: UITableView) {
         if !containsNibAndReuse(nib: nib, reuseId: reuseId) {
@@ -30,8 +28,7 @@ public class NibRegistrator {
     }
 
     private func containsNibAndReuse(nib: UINib, reuseId: String) -> Bool {
-        let count = registeredIdentifiers[reuseId].orZero
-        return count.isPositive
+        return registeredIdentifiers[reuseId].orZero.isPositive
     }
 
     private func addNibAndReuseId(nib: UINib, reuseId: String) {
@@ -45,7 +42,7 @@ public class NibRegistrator {
      */
     private func removeNibAndReuseId(nib: UINib, reuseId: String) -> Bool {
         let oldValue = registeredIdentifiers[reuseId].orZero - 1
-        if (oldValue.isZeroOrNegative) {
+        if oldValue.isZeroOrNegative {
             registeredIdentifiers.removeValue(forKey: reuseId)
         } else {
             //oldValue -1 is positive
@@ -57,6 +54,4 @@ public class NibRegistrator {
     public func clear() {
         registeredIdentifiers.removeAll()
     }
-
-
 }

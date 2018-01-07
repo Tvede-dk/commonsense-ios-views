@@ -13,7 +13,7 @@ import csenseSwift
 @objc open class BaseNibView: UIView {
 
     private let nibLoader = NibLoader()
-    
+
     open func getNib() -> UINib {
         return UINib(nibName: getNibName(), bundle: getNibBundle())
     }
@@ -35,4 +35,3 @@ import csenseSwift
         return nibLoader.awakeAfter(withNib: getNib(), callerSelf: self)
     }
 }
-

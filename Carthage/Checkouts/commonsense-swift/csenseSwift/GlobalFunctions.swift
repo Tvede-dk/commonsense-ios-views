@@ -19,7 +19,7 @@ func isAnyNotNil(_ objects: Any?...) -> Bool {
  *
  *
  */
-func isAnyNil( _ objects : Any? ...) -> Bool{
+func isAnyNil( _ objects: Any? ...) -> Bool {
     return objects.count > 0 && objects.contains(where: {object -> Bool in
         object == nil
     })

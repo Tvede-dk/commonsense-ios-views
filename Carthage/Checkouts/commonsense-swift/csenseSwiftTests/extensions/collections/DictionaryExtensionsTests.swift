@@ -67,4 +67,18 @@ class DictionaryExtensionsTest: XCTestCase {
         tempDict.isIndexValid(3).assert(false)
     }
 
+    func testLookupDictionary() {
+        var dict: [Int: [Int]] = [:]
+        dict.lookupElement(at: IndexPath(row: 0, section: 0)).assertNil()
+        dict[0] = [0]
+        dict.lookupElement(at: IndexPath(row: 0, section: 0)).assertNotNilEquals(0)
+        dict[0] = [42]
+        dict.lookupElement(at: IndexPath(row: 0, section: 0)).assertNotNilEquals(42)
+        dict[20] = [20, 20, 40, 20, 20]
+        dict.lookupElement(at: IndexPath(row: 0, section: 20)).assertNotNilEquals(20)
+        dict.lookupElement(at: IndexPath(row: 2, section: 20)).assertNotNilEquals(40)
+        dict.lookupElement(at: IndexPath(row: 4, section: 20)).assertNotNilEquals(20)
+        dict.lookupElement(at: IndexPath(row: 5, section: 20)).assertNil()
+    }
+
 }

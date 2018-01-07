@@ -50,7 +50,6 @@ public extension String {
     }
 }
 
-
 public func identityFunction<T>() -> FunctionResult<T, T> {
     return { (value: T) -> T in
         value
