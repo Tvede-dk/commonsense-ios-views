@@ -31,10 +31,6 @@ public struct TableDataContainerUpdate {
         return TableDataContainerUpdate(inserted: indexPaths, updated: [], removed: [])
     }
 
-    public static func updated(indexPaths: [IndexPath]) -> TableDataContainerUpdate {
-        return TableDataContainerUpdate(inserted: [], updated: indexPaths, removed: [])
-    }
-
     public static func deleted(indexPaths: [IndexPath]) -> TableDataContainerUpdate {
         return TableDataContainerUpdate(inserted: [], updated: [], removed: indexPaths)
     }
@@ -241,7 +237,7 @@ public class TableDataContainer: NSObject,
     private func getBadTableViewCell(tableView: UITableView, at: IndexPath) -> UITableViewCell {
         Logger.shared.logWarning(message: "Bad cell tried to be render at indexPath:\(at)")
 
-        if  shouldCrashOnBadCell {
+        if shouldCrashOnBadCell {
             fatalError("Crashing on bad ui cell, the cell you tried to display was broken;" +
                     " indexPath is: \(at)")
         }
