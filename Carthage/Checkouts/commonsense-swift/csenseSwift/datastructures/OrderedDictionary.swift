@@ -100,7 +100,7 @@ public struct OrderedDictionary<Key: Hashable, Value>: BidirectionalCollection {
     // ======================================================= //
 
     /// Converts itself to a common unsorted dictionary.
-    public var unorderedDictionary: Dictionary<Key, Value> {
+    public var unorderedDictionary: [Key : Value] {
         return _keysToValues
     }
 
@@ -714,7 +714,7 @@ extension OrderedDictionary {
             return "[:]"
         }
 
-        let printFunction: (Any, inout String) -> () = {
+        let printFunction: (Any, inout String) -> Void = {
             if debug {
                 return {
                     debugPrint($0, separator: "", terminator: "", to: &$1)

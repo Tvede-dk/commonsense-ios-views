@@ -31,6 +31,13 @@ public extension String {
     }
 
     /**
+     * tells if the string does not only contains whitespace characters, if not then this is false
+     */
+    public var isNotBlank: Bool {
+        return !isBlank
+    }
+
+    /**
      * Url encodes a string, such that it can be used as parameters (eg query strings ect).
      */
     public func urlEncoded() -> String? {

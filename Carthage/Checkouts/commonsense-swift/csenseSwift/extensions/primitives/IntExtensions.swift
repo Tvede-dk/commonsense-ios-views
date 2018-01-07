@@ -21,4 +21,22 @@ public extension Int {
     public var isPositive: Bool {
         return self > 0
     }
+
+    public var isZeroOrNegative: Bool {
+        return self <= 0
+    }
+
+    public var isZeroOrPositive: Bool {
+        return self >= 0
+    }
+}
+
+
+public extension Optional where Wrapped == Int {
+    /**
+     *   the current value iff not nil otherwise 0
+     */
+    public var orZero: Int {
+        return self ?? 0
+    }
 }

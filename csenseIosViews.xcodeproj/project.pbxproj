@@ -22,17 +22,16 @@
 
 /* Begin PBXBuildFile section */
 		A706DE851FAF6E9D003FEAE6 /* TableDataContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A706DE841FAF6E9D003FEAE6 /* TableDataContainerTests.swift */; };
-		A706DE861FAF745E003FEAE6 /* csenseTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A706DE871FAF745E003FEAE6 /* csenseTests.framework */; };
 		A72802821FCA2492004BDC8A /* NibableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72802811FCA2492004BDC8A /* NibableView.swift */; };
 		A72802841FCA2497004BDC8A /* NibLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72802831FCA2497004BDC8A /* NibLoader.swift */; };
 		A72802861FCC170A004BDC8A /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72802851FCC170A004BDC8A /* UITableViewExtensions.swift */; };
+		A7B06DDD20028ECB00FAEDD6 /* csenseIosBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B06DDB20028ECB00FAEDD6 /* csenseIosBase.framework */; };
+		A7B06DDE20028ECB00FAEDD6 /* csenseSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B06DDC20028ECB00FAEDD6 /* csenseSwift.framework */; };
 		A7D3CDC41FADE61F00A8633F /* csenseIosViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D3CDBA1FADE61E00A8633F /* csenseIosViews.framework */; };
 		A7D3CDCB1FADE61F00A8633F /* csenseIosViews.h in Headers */ = {isa = PBXBuildFile; fileRef = A7D3CDBD1FADE61E00A8633F /* csenseIosViews.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A7D3CE441FADEBF500A8633F /* BaseNibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D3CE431FADEBF500A8633F /* BaseNibView.swift */; };
 		A7D3CE461FADEC5700A8633F /* SimpleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D3CE451FADEC5700A8633F /* SimpleTableView.swift */; };
 		A7D3CE491FADED8200A8633F /* TableDataContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D3CE481FADED8200A8633F /* TableDataContainer.swift */; };
-		A7F7F6141FD572BA0095B2EE /* csenseIosBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F7F6161FD572BA0095B2EE /* csenseIosBase.framework */; };
-		A7F7F6151FD572BA0095B2EE /* csenseSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7F7F6171FD572BA0095B2EE /* csenseSwift.framework */; };
 		BC23630F8F6A19A5035E301D /* GenericTableItemRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC236443CFF76F7E23640F62 /* GenericTableItemRender.swift */; };
 		BC236419B5CBDE8957F80ECB /* RenderIntegrations.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC23668FBCDE4A0FF1E18033 /* RenderIntegrations.swift */; };
 		BC23648778EC760C7D0338C5 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC236424A6162C26150DBA07 /* UILabelExtensions.swift */; };
@@ -61,14 +60,13 @@
 
 /* Begin PBXFileReference section */
 		A706DE841FAF6E9D003FEAE6 /* TableDataContainerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataContainerTests.swift; sourceTree = "<group>"; };
-		A706DE871FAF745E003FEAE6 /* csenseTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A72802811FCA2492004BDC8A /* NibableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibableView.swift; sourceTree = "<group>"; };
 		A72802831FCA2497004BDC8A /* NibLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoader.swift; sourceTree = "<group>"; };
 		A72802851FCC170A004BDC8A /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
-		A7646D241FB54FF80011BBEF /* csenseIosBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseIosBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A788BADB1FB058DE00A52E0F /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
-		A7ABAE3A1FC0826300333786 /* csenseIosBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseIosBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7ABAE3B1FC0826300333786 /* csenseSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7B06DCB2000F2FA00FAEDD6 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
+		A7B06DDB20028ECB00FAEDD6 /* csenseIosBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = csenseIosBase.framework; path = Carthage/Build/iOS/csenseIosBase.framework; sourceTree = "<group>"; };
+		A7B06DDC20028ECB00FAEDD6 /* csenseSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = csenseSwift.framework; path = Carthage/Build/iOS/csenseSwift.framework; sourceTree = "<group>"; };
 		A7D3CDBA1FADE61E00A8633F /* csenseIosViews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = csenseIosViews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7D3CDBD1FADE61E00A8633F /* csenseIosViews.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = csenseIosViews.h; sourceTree = "<group>"; };
 		A7D3CDBE1FADE61E00A8633F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -77,11 +75,6 @@
 		A7D3CE431FADEBF500A8633F /* BaseNibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNibView.swift; sourceTree = "<group>"; };
 		A7D3CE451FADEC5700A8633F /* SimpleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableView.swift; sourceTree = "<group>"; };
 		A7D3CE481FADED8200A8633F /* TableDataContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableDataContainer.swift; sourceTree = "<group>"; };
-		A7D3CE541FAE8C8C00A8633F /* csenseSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7D7F6D71FC80C760037E16E /* csenseIosBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseIosBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7D7F6D81FC80C760037E16E /* csenseSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7F7F6161FD572BA0095B2EE /* csenseIosBase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseIosBase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7F7F6171FD572BA0095B2EE /* csenseSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = csenseSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC2361FB9FE3F4D09CCD82D6 /* NibRegistrator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibRegistrator.swift; sourceTree = "<group>"; };
 		BC2362749F5E8CA4E9445438 /* GenericTableHeaderItemRender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericTableHeaderItemRender.swift; sourceTree = "<group>"; };
 		BC236378156EC70D4CA30395 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
@@ -103,8 +96,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A7F7F6141FD572BA0095B2EE /* csenseIosBase.framework in Frameworks */,
-				A7F7F6151FD572BA0095B2EE /* csenseSwift.framework in Frameworks */,
+				A7B06DDD20028ECB00FAEDD6 /* csenseIosBase.framework in Frameworks */,
+				A7B06DDE20028ECB00FAEDD6 /* csenseSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,7 +105,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A706DE861FAF745E003FEAE6 /* csenseTests.framework in Frameworks */,
 				A7D3CDC41FADE61F00A8633F /* csenseIosViews.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +123,7 @@
 		A7D3CDB01FADE61E00A8633F = {
 			isa = PBXGroup;
 			children = (
+				A7B06DCB2000F2FA00FAEDD6 /* .swiftlint.yml */,
 				A788BADB1FB058DE00A52E0F /* Cartfile */,
 				A7D3CDBC1FADE61E00A8633F /* csenseIosViews */,
 				A7D3CDC71FADE61F00A8633F /* csenseIosViewsTests */,
@@ -197,15 +190,8 @@
 		A7D3CE501FAE8C8C00A8633F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A7F7F6161FD572BA0095B2EE /* csenseIosBase.framework */,
-				A7F7F6171FD572BA0095B2EE /* csenseSwift.framework */,
-				A7D7F6D71FC80C760037E16E /* csenseIosBase.framework */,
-				A7D7F6D81FC80C760037E16E /* csenseSwift.framework */,
-				A7ABAE3A1FC0826300333786 /* csenseIosBase.framework */,
-				A7ABAE3B1FC0826300333786 /* csenseSwift.framework */,
-				A7646D241FB54FF80011BBEF /* csenseIosBase.framework */,
-				A706DE871FAF745E003FEAE6 /* csenseTests.framework */,
-				A7D3CE541FAE8C8C00A8633F /* csenseSwift.framework */,
+				A7B06DDB20028ECB00FAEDD6 /* csenseIosBase.framework */,
+				A7B06DDC20028ECB00FAEDD6 /* csenseSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -276,6 +262,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A7D3CDCE1FADE61F00A8633F /* Build configuration list for PBXNativeTarget "csenseIosViews" */;
 			buildPhases = (
+				A7B06DD82000F50200FAEDD6 /* swiftlint */,
 				A7D3CDB51FADE61E00A8633F /* Sources */,
 				A7D3CDB61FADE61E00A8633F /* Frameworks */,
 				A7D3CDB71FADE61E00A8633F /* Headers */,
@@ -384,6 +371,20 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "#!/bin/sh\n\n\nUNIVERSAL_OUTPUTFOLDER=${BUILD_DIR}/${CONFIGURATION}-universal\n\n\n# make sure the output directory exists\n\nmkdir -p \"${UNIVERSAL_OUTPUTFOLDER}\"\n\n\n# Step 1. Build Device and Simulator versions\n\nxcodebuild BITCODE_GENERATION_MODE=bitcode OTHER_CFLAGS=\"-fembed-bitcode\" -target \"${PROJECT_NAME}\" ONLY_ACTIVE_ARCH=NO -configuration ${CONFIGURATION} -sdk iphoneos  BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build OTHER_LDFLAGS=\"-ObjC -fembed-bitcode\"\n\nxcodebuild BITCODE_GENERATION_MODE=bitcode OTHER_CFLAGS=\"-fembed-bitcode-marker\" -target \"${PROJECT_NAME}\" -configuration ${CONFIGURATION} -sdk iphonesimulator ONLY_ACTIVE_ARCH=NO BUILD_DIR=\"${BUILD_DIR}\" BUILD_ROOT=\"${BUILD_ROOT}\" clean build OTHER_LDFLAGS=\"-ObjC\"\n\n\n# Step 2. Copy the framework structure (from iphoneos build) to the universal folder\n\ncp -R \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework\" \"${UNIVERSAL_OUTPUTFOLDER}/\"\n\n\n# Step 3. Copy Swift modules from iphonesimulator build (if it exists) to the copied framework directory\n\nSIMULATOR_SWIFT_MODULES_DIR=\"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule/.\"\n\nif [ -d \"${SIMULATOR_SWIFT_MODULES_DIR}\" ]; then\n\ncp -R \"${SIMULATOR_SWIFT_MODULES_DIR}\" \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/Modules/${PROJECT_NAME}.swiftmodule\"\n\nfi\n\n\n# Step 4. Create universal binary file using lipo and place the combined executable in the copied framework directory\n\nlipo -create -output \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphonesimulator/${PROJECT_NAME}.framework/${PROJECT_NAME}\" \"${BUILD_DIR}/${CONFIGURATION}-iphoneos/${PROJECT_NAME}.framework/${PROJECT_NAME}\"\n\n\n# Step 5. Convenience step to copy the framework to the project's directory\n\ncp -R \"${UNIVERSAL_OUTPUTFOLDER}/${PROJECT_NAME}.framework\" \"${PROJECT_DIR}\"\n\n\n# Step 6. Convenience step to open the project's directory in Finder\n\nopen \"${BUILD_DIR}/${CONFIGURATION}-universal\"\n";
+		};
+		A7B06DD82000F50200FAEDD6 /* swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = swiftlint;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint --config .swiftlint.yml\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -577,7 +578,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/Carthage/Build/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"${PROJECT_DIR}/Carthage/Build/**",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = csenseIosViews/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -603,7 +607,10 @@
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_BITCODE = YES;
-				FRAMEWORK_SEARCH_PATHS = "${PROJECT_DIR}/Carthage/Build/**";
+				FRAMEWORK_SEARCH_PATHS = (
+					"${PROJECT_DIR}/Carthage/Build/**",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = csenseIosViews/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

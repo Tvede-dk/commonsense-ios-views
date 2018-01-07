@@ -76,7 +76,7 @@ open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell 
         updateFunction = callback
     }
 
-    private var updateFunction: EmptyFunction? = nil
+    private var updateFunction: EmptyFunction? 
 
     /**
      *

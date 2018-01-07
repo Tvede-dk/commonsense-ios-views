@@ -46,7 +46,7 @@ public class TableDataContainer: NSObject,
      * if the shouldCrashOnBadCell is false,
      *  then if this is set to not nil, this will be runned on each "bad" / broken cell
      */
-    public var optionalBadCellRender: FunctionResult<UITableView, UITableViewCell>? = nil
+    public var optionalBadCellRender: FunctionResult<UITableView, UITableViewCell>?
 
     private var headerSections: SortedArray<GenericTableHeaderItem> = SortedArray()
 

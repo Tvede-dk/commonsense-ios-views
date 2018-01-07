@@ -30,4 +30,10 @@ public extension Optional {
         return ifNotNil(action: action)
     }
 
+    /**
+     * Returns self if not nil, or the given default value.
+     */
+    public func valueOr(_ defaultValue: Wrapped) -> Wrapped {
+        return self ?? defaultValue
+    }
 }

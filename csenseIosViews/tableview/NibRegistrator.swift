@@ -9,7 +9,7 @@ import csenseSwift
 public class NibRegistrator {
 
 
-    private var registeredIdentifiers: Dictionary<String, Int> = Dictionary()
+    private var registeredIdentifiers: [String : Int] = [:]
 
 
     public func addNib(nib: UINib, reuseId: String, tableView: UITableView) {

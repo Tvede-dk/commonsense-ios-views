@@ -10,7 +10,7 @@ import Foundation
 
 public extension Dictionary where Key == Int {
 
-    public func lookupElement<T>(at: IndexPath) -> T? where Key == Int, Value == Array<T> {
+    public func lookupElement<T>(at: IndexPath) -> T? where Key == Int, Value == [T] {
         return self[at.section]?[at.row]
     }
 
@@ -38,7 +38,7 @@ public extension Dictionary {
     /**
      * safely adds an item for a given key or creates a new array with the item if not pressented
      */
-    public mutating func addOrCreate<T>(key: Key, item: T) where Value == Array<T> {
+    public mutating func addOrCreate<T>(key: Key, item: T) where Value == [T] {
         var list = self[key] ?? []
         list.append(item)
         self.updateValue(list, forKey: key)
@@ -46,7 +46,7 @@ public extension Dictionary {
 }
 
 public extension OrderedDictionary where Key == Int {
-    public func lookupElement<T>(at: IndexPath) -> T? where Key == Int, Value == Array<T> {
+    public func lookupElement<T>(at: IndexPath) -> T? where Key == Int, Value == [T] {
         return self[at.section]?[at.row]
     }
 
@@ -89,5 +89,3 @@ public extension OrderedDictionary {
         self.updateValue(list, forKey: key)
     }
 }
-
-

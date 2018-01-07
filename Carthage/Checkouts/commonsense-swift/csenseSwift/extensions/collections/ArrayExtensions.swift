@@ -8,14 +8,14 @@
 
 import Foundation
 
-extension Array {
+public extension Array {
     /**
-      * Tells if there is a key with the given index
-      */
+     * Tells if there is a key with the given index
+     */
     public func isIndexValid(_ index: Int) -> Bool {
         return index >= 0 && index < self.count
     }
-
+    
     public mutating func insertOrUpdate(index: Int, value: Element) -> Element? {
         let isValidIndex = self.isIndexValid(index)
         let result = getSafe(index: index)
@@ -26,13 +26,22 @@ extension Array {
         }
         return result
     }
-
+    
     public func getSafe(index: Int) -> Element? {
         if isIndexValid(index) {
             return self[index]
         } else {
             return nil
         }
+    }
+}
+
+public extension Optional where Wrapped: Collection {
+    /**
+     *
+     */
+    public var countOrZero: Wrapped.IndexDistance {
+        return self?.count ?? 0
     }
 }
 
