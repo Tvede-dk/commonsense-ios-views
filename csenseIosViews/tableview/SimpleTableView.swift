@@ -27,15 +27,29 @@ import UIKit
  */
 open class SimpleTableView: UITableView {
 
-    // MARK: class properties / exposed
+    // MARK: public properties
+    
+    /**
+     * animation when inserting cell(s)
+     */
     public var insertionAnimation: UITableViewRowAnimation = UITableViewRowAnimation.automatic
 
+    /**
+     * animation when deleting cell(s)
+     */
     public var deletionAnimation: UITableViewRowAnimation = UITableViewRowAnimation.automatic
-
+    
+    /**
+     * animation when reloading cell(s)
+     */
     public var reloadingAnimation: UITableViewRowAnimation = UITableViewRowAnimation.automatic
 
+    // MARK: private properties
     private let nibRegistrator: NibRegistrator = NibRegistrator()
-
+    
+    /**
+     * The data storage. also the guy that does most of the heavy section indexing / lifting.
+     */
     private let data = TableDataContainer()
 
     // MARK: Init
@@ -80,7 +94,6 @@ open class SimpleTableView: UITableView {
     }
 
     // MARK: public functions
-
     public func add(item: GenericTableItem, forSection: Int) {
         addNibFromGenericTableItem(item: item)
         applyResultUpdate(update: data.add(item: item, forSection: forSection))
@@ -135,7 +148,22 @@ open class SimpleTableView: UITableView {
     /*public func setFooter(footer : GenericTableHeaderItem, forSection: Int){
         data.setFooter(footer, forSection: forSection)
     }*/
+    
+    // MARK: visibility handling
+/*
+    public func showSection(forSection: Int) {
+        setSectionVisibility(forSection: forSection, visible: true)
+    }
 
+    public func hideSection(forSection: Int) {
+        setSectionVisibility(forSection: forSection, visible: false)
+    }
+
+    public func setSectionVisibility(forSection: Int, visible: Bool) {
+        let update = data.setSectionVisibility(forSection: forSection, visible: visible)
+        applyResultUpdate(update: update)
+    }
+*/
     // MARK: data and nib registration
 
     private func applyResultUpdate(update: TableDataSectionUpdate) {
@@ -158,7 +186,8 @@ open class SimpleTableView: UITableView {
             }
             endUpdates()
         } else {
-            Logger.shared.logWarning(message: "did not perform any updates.")
+            //Logger.shared.logDebug(message: "did not perform any updates.")
+            
         }
     }
 
@@ -182,4 +211,22 @@ open class SimpleTableView: UITableView {
         nibRegistrator.addNib(nib: nib, reuseId: reuseId, tableView: self)
     }
 
+}
+
+public extension SimpleTableView {
+    /**
+     * removes all animations from this table view (insertion, deletion, reloading)
+     */
+    func disableAnimations() {
+        setAnimations(animation: .none)
+    }
+
+    /**
+     * applies the given animation to all kinds of animations in the table view.
+     */
+    func setAnimations(animation: UITableViewRowAnimation) {
+        self.insertionAnimation = animation
+        self.deletionAnimation = animation
+        self.reloadingAnimation = animation
+    }
 }

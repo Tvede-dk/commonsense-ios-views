@@ -11,64 +11,6 @@ import csenseIosBase
 import csenseSwift
 
 /**
- * Describes an update performed on a table, so for example if just inserting 1 element then
- * the inserted will contain that path.
- * the path will be in raw indexes (ios compatible). not logic indexes!
- *
- */
-public struct TableDataContainerUpdate {
-    public let inserted: [IndexPath]
-    public let updated: [IndexPath]
-    public let removed: [IndexPath]
-
-    /**
-     * returns true if any of the updates lists contains anything,false otherwise.
-     */
-    func isNotEmpty() -> Bool {
-        return inserted.isNotEmpty || updated.isNotEmpty || removed.isNotEmpty
-    }
-    /**
-     *
-     */
-    public static let empty: TableDataContainerUpdate
-        = TableDataContainerUpdate(inserted: [], updated: [], removed: [])
-
-    public static func inserted(indexPaths: [IndexPath]) -> TableDataContainerUpdate {
-        return TableDataContainerUpdate(inserted: indexPaths, updated: [], removed: [])
-    }
-
-    public static func deleted(indexPaths: [IndexPath]) -> TableDataContainerUpdate {
-        return TableDataContainerUpdate(inserted: [], updated: [], removed: indexPaths)
-    }
-}
-
-public struct TableDataSectionUpdate {
-    public let createdSectionAtRawIndex: Int?
-    public let deletedSectionAtRawIndex: Int?
-    public let updatedRows: TableDataContainerUpdate
-
-    public static func createdSection(rawSectionIndex: Int) -> TableDataSectionUpdate {
-        return TableDataSectionUpdate(createdSectionAtRawIndex: rawSectionIndex,
-                                      deletedSectionAtRawIndex: nil,
-                                      updatedRows: TableDataContainerUpdate.empty)
-    }
-
-    public static func deletedSection(rawSectionIndex: Int) -> TableDataSectionUpdate {
-        return TableDataSectionUpdate(createdSectionAtRawIndex: nil,
-                                      deletedSectionAtRawIndex: rawSectionIndex,
-                                      updatedRows: TableDataContainerUpdate.empty)
-    }
-
-    public static func updatedSection(updatedRows: TableDataContainerUpdate) -> TableDataSectionUpdate {
-        return TableDataSectionUpdate(createdSectionAtRawIndex: nil,
-                                      deletedSectionAtRawIndex: nil,
-                                      updatedRows: updatedRows)
-    }
-    public static let empty: TableDataSectionUpdate
-        = TableDataSectionUpdate.updatedSection(updatedRows: TableDataContainerUpdate.empty)
-}
-
-/**
  * Point of the class
  *
  * x) the tableview cannot deal with partial / sparse array of sections,
@@ -96,7 +38,7 @@ public class TableDataContainer: NSObject,
 
     private var headerSections: SortedArray<GenericTableHeaderItem> = SortedArray()
 
-    private var sections: SortedArray<[GenericTableItem]> = SortedArray()
+    private var sections: SortedArray<TableDataSection> = SortedArray()
 
     // MARK: items modifiers
     public func add(item: GenericTableItem, forSection: Int) -> TableDataSectionUpdate {
@@ -179,14 +121,14 @@ public class TableDataContainer: NSObject,
             //we are going to remove the section.
             return removeItemsIn(section: forSection)
         }
-        let oldSectionContent = sections.getWithRawIndex(forIndex: forSection) ?? ([], -1)
+        let oldSectionContent = sections.getWithRawIndex(forIndex: forSection) ?? (TableDataSection(), -1)
         if oldSectionContent.item.isEmpty {
             //we added a new section
             return add(items: items, forSection: forSection)
         }
         //we have "overlap". compute diff.
-        let diff = computeDiff(newItems: items, oldItems: oldSectionContent.item, forSection: oldSectionContent.rawIndex)
-        sections.set(value: items, forIndex: forSection)
+        let diff = computeDiff(newItems: items, oldItems: oldSectionContent.item.data, forSection: oldSectionContent.rawIndex)
+        setNewSectionContent(data: items, forSection: forSection )
         return TableDataSectionUpdate.updatedSection(updatedRows: diff)
     }
 
@@ -283,7 +225,43 @@ public class TableDataContainer: NSObject,
     }
 
     public func rowsInSection(forSection: Int) -> [GenericTableItem]? {
-        return sections.get(forIndex: forSection)
+        return sections.get(forIndex: forSection)?.data
+    }
+
+    public func setSectionVisibility(forSection: Int, visible: Bool) -> TableDataSectionUpdate {
+        //step 1 if equal then bail.
+        guard let section = sections.get(forRawIndex: forSection) else {
+            return TableDataSectionUpdate.empty
+        }
+        //if equal, then do nothing.
+        if section.isHidden == !visible {
+            return TableDataSectionUpdate.empty
+        }
+        section.isHidden = !visible
+        //compute the raw index of the update.
+        if visible {
+            //we are adding this section.
+            //and we have an update
+            return TableDataSectionUpdate.createdSection(rawSectionIndex: 0)
+        } else {
+            //we are removing this section.
+            //and we have an update
+            return TableDataSectionUpdate.deletedSection(rawSectionIndex: 0)
+        }
+    }
+
+    private func findRawIndexNotHidden() -> Int? {
+        var unHiddenCounter = 0
+        for counter in 0 ... sections.count - 1 {
+            guard let section = sections.get(forRawIndex: counter) else {
+                return nil
+            }
+            // if have found then return unHiddenCounter
+            if section.isHidden == false {
+                unHiddenCounter += 1
+            }
+        }
+        return nil
     }
 
     // MARK: rendering and indexing - for items in sections
@@ -300,18 +278,27 @@ public class TableDataContainer: NSObject,
 
     private func updateSection(forSection: Int, updateFunction: MutatingFunction<[GenericTableItem]>) -> Int? {
         let input = sections.getWithRawIndex(forIndex: forSection)
-        var temp = input?.item ?? []
+        var temp = input?.item.data ?? []
         updateFunction(&temp)
-        sections.set(value: temp, forIndex: forSection)
+        setNewSectionContent(data: temp, forSection: forSection)
         return input?.rawIndex ?? getRawSection(forSection: forSection)
     }
 
+    private func setNewSectionContent(data: [GenericTableItem],
+                                      forSection: Int) {
+        if let old = sections.get(forIndex: forSection) {
+            sections.set(value: old.updateContentWith(data), forIndex: forSection)
+        } else {
+            sections.set(value: TableDataSection(data: data, isHidden: false), forIndex: forSection)
+        }
+    }
+
     private func getSectionRowByIndex(at: IndexPath) -> GenericTableItem? {
-        return sections.get(forRawIndex: at.section)?[at.row]
+        return sections.get(forRawIndex: at.section)?.data[at.row]
     }
 
     private func getSectionByIndex(index: Int) -> [GenericTableItem] {
-        return sections.get(forRawIndex: index) ?? []
+        return sections.get(forRawIndex: index)?.data ?? []
     }
 
     private func renderItem(tableView: UITableView, at: IndexPath) -> UITableViewCell {
