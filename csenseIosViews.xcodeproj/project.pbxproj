@@ -25,6 +25,7 @@
 		A72802821FCA2492004BDC8A /* NibableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72802811FCA2492004BDC8A /* NibableView.swift */; };
 		A72802841FCA2497004BDC8A /* NibLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72802831FCA2497004BDC8A /* NibLoader.swift */; };
 		A72802861FCC170A004BDC8A /* UITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A72802851FCC170A004BDC8A /* UITableViewExtensions.swift */; };
+		A781095A2002EE1F00C2388A /* SimpleTableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A78109592002EE1F00C2388A /* SimpleTableTests.swift */; };
 		A7B06DDD20028ECB00FAEDD6 /* csenseIosBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B06DDB20028ECB00FAEDD6 /* csenseIosBase.framework */; };
 		A7B06DDE20028ECB00FAEDD6 /* csenseSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7B06DDC20028ECB00FAEDD6 /* csenseSwift.framework */; };
 		A7D3CDC41FADE61F00A8633F /* csenseIosViews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A7D3CDBA1FADE61E00A8633F /* csenseIosViews.framework */; };
@@ -63,6 +64,7 @@
 		A72802811FCA2492004BDC8A /* NibableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibableView.swift; sourceTree = "<group>"; };
 		A72802831FCA2497004BDC8A /* NibLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoader.swift; sourceTree = "<group>"; };
 		A72802851FCC170A004BDC8A /* UITableViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExtensions.swift; sourceTree = "<group>"; };
+		A78109592002EE1F00C2388A /* SimpleTableTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleTableTests.swift; sourceTree = "<group>"; };
 		A788BADB1FB058DE00A52E0F /* Cartfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		A7B06DCB2000F2FA00FAEDD6 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		A7B06DDB20028ECB00FAEDD6 /* csenseIosBase.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = csenseIosBase.framework; path = Carthage/Build/iOS/csenseIosBase.framework; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				A706DE841FAF6E9D003FEAE6 /* TableDataContainerTests.swift */,
+				A78109592002EE1F00C2388A /* SimpleTableTests.swift */,
 			);
 			path = tableview;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A781095A2002EE1F00C2388A /* SimpleTableTests.swift in Sources */,
 				A706DE851FAF6E9D003FEAE6 /* TableDataContainerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

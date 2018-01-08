@@ -110,10 +110,14 @@ open class SimpleTableView: UITableView {
     }
 
     public func clear() {
-        let sectionIndexes = IndexSet(0 ... numberOfSections - 1)
-        data.clear()
         nibRegistrator.clear()
-        deleteSections(sectionIndexes, with: deletionAnimation)
+        let numberBefore = numberOfSections
+        data.clear()
+        //if we had data, then remove all the deleted sections.
+        if numberBefore.isPositive {
+            let sectionIndexes = IndexSet(0 ... numberOfSections - 1)
+            deleteSections(sectionIndexes, with: deletionAnimation)
+        }
     }
 
     public func set(item: GenericTableItem, forSection: Int) {
