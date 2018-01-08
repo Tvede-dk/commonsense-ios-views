@@ -232,6 +232,10 @@ public class TableDataContainer: NSObject,
         return sections.rawIndexOf(forIndex: forSection)
     }
 
+    public func rowsInSection(forSection: Int) -> [GenericTableItem]? {
+        return sections.get(forIndex: forSection)
+    }
+
     // MARK: rendering and indexing - for items in sections
 
     private func getBadTableViewCell(tableView: UITableView, at: IndexPath) -> UITableViewCell {

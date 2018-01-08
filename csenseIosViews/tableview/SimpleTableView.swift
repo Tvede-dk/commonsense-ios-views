@@ -125,7 +125,10 @@ open class SimpleTableView: UITableView {
     }
 
     public func set(items: [GenericTableItem], forSection: Int) {
-       let update = data.setSection(items: items, forSection: forSection)
+
+        data.rowsInSection(forSection: forSection)?.forEach(removeNibFromGenericTableItem)
+        items.forEach(addNibFromGenericTableItem)
+        let update = data.setSection(items: items, forSection: forSection)
         //if the deleIndex is set, then we are deleting the section
         update.deleteIndex.useSafe { (value)  in
             deleteSections(IndexSet(integer: value), with: deletionAnimation)

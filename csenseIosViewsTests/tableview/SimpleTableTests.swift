@@ -16,5 +16,6 @@ class SimpleTableTests: XCTestCase {
     func testClear(){
         let table = SimpleTableView()
         table.clear()
+        
     }
 }
