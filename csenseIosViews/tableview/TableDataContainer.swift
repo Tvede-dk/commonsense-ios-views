@@ -22,6 +22,12 @@ public struct TableDataContainerUpdate {
     public let removed: [IndexPath]
 
     /**
+     * returns true if any of the updates lists contains anything,false otherwise.
+     */
+    func isNotEmpty() -> Bool {
+        return inserted.isNotEmpty || updated.isNotEmpty || removed.isNotEmpty
+    }
+    /**
      *
      */
     public static let empty: TableDataContainerUpdate
@@ -34,6 +40,32 @@ public struct TableDataContainerUpdate {
     public static func deleted(indexPaths: [IndexPath]) -> TableDataContainerUpdate {
         return TableDataContainerUpdate(inserted: [], updated: [], removed: indexPaths)
     }
+}
+
+public struct TableDataSectionUpdate {
+    public let createdSectionAtRawIndex: Int?
+    public let deletedSectionAtRawIndex: Int?
+    public let updatedRows: TableDataContainerUpdate
+
+    public static func createdSection(rawSectionIndex: Int) -> TableDataSectionUpdate {
+        return TableDataSectionUpdate(createdSectionAtRawIndex: rawSectionIndex,
+                                      deletedSectionAtRawIndex: nil,
+                                      updatedRows: TableDataContainerUpdate.empty)
+    }
+
+    public static func deletedSection(rawSectionIndex: Int) -> TableDataSectionUpdate {
+        return TableDataSectionUpdate(createdSectionAtRawIndex: nil,
+                                      deletedSectionAtRawIndex: rawSectionIndex,
+                                      updatedRows: TableDataContainerUpdate.empty)
+    }
+
+    public static func updatedSection(updatedRows: TableDataContainerUpdate) -> TableDataSectionUpdate {
+        return TableDataSectionUpdate(createdSectionAtRawIndex: nil,
+                                      deletedSectionAtRawIndex: nil,
+                                      updatedRows: updatedRows)
+    }
+    public static let empty: TableDataSectionUpdate
+        = TableDataSectionUpdate.updatedSection(updatedRows: TableDataContainerUpdate.empty)
 }
 
 /**
@@ -67,54 +99,74 @@ public class TableDataContainer: NSObject,
     private var sections: SortedArray<[GenericTableItem]> = SortedArray()
 
     // MARK: items modifiers
-    public func add(item: GenericTableItem, forSection: Int) -> TableDataContainerUpdate {
+    public func add(item: GenericTableItem, forSection: Int) -> TableDataSectionUpdate {
         return add(items: [item], forSection: forSection)
     }
 
-    public func add(items: [GenericTableItem], forSection: Int) -> TableDataContainerUpdate {
+    public func add(items: [GenericTableItem], forSection: Int) -> TableDataSectionUpdate {
         let prevSize = size(forSection: forSection)
-        if let rawSection = updateSection(forSection: forSection, updateFunction: { content in
+        guard let rawSection = updateSection(forSection: forSection, updateFunction: { content in
             content += items
-        }) {
-            return TableDataContainerUpdate.inserted(indexPaths:
-                items.mapIndex(generator: { (_, index) -> IndexPath in
+        }) else {
+            return TableDataSectionUpdate.empty
+        }
+        //if prev size is zero, then we have created the section
+        if prevSize.isZero {
+            return TableDataSectionUpdate.createdSection(rawSectionIndex: rawSection)
+        } else {
+            //else we have added rows
+            let insertedRows = TableDataContainerUpdate.inserted(
+                indexPaths: items.mapIndex(generator: { (_, index) -> IndexPath in
                     return IndexPath(row: prevSize + index, section: rawSection)
                 }))
+            return TableDataSectionUpdate.updatedSection(updatedRows: insertedRows)
         }
-        return TableDataContainerUpdate.empty
     }
 
-    public func removeItemsIn(section: Int) -> [GenericTableItem] {
-        return sections.remove(forIndex: section) ?? []
-    }
-
-    public func removeItem(atRow: Int, forSection: Int) -> (GenericTableItem?, TableDataContainerUpdate) {
-        var result: GenericTableItem? = nil
-        if let rawSection = updateSection(forSection: forSection, updateFunction: { content in
-            result = content.remove(at: atRow)
-        }) {
-            return (result, TableDataContainerUpdate.deleted(indexPaths: [IndexPath(row: atRow, section: rawSection)]))
+    public func removeItemsIn(section: Int) -> TableDataSectionUpdate {
+        guard let rawIndex = sections.rawIndexOf(forIndex: section) else {
+            return TableDataSectionUpdate.empty
         }
-        return (result, TableDataContainerUpdate.empty)
+        _ = sections.remove(forIndex: section)
+        return TableDataSectionUpdate.deletedSection(rawSectionIndex: rawIndex)
     }
 
-    public func clearItems() {
+    public func removeItem(atRow: Int, forSection: Int) -> TableDataSectionUpdate {
+        var isEmptyAfterDelete = false
+
+        guard let rawSection = updateSection(forSection: forSection, updateFunction: { content in
+            _ = content.remove(at: atRow)
+            isEmptyAfterDelete = content.isEmpty
+        }) else {
+            return TableDataSectionUpdate.empty
+        }
+
+        if isEmptyAfterDelete {
+            return TableDataSectionUpdate.deletedSection(rawSectionIndex: rawSection)
+        } else {
+            return TableDataSectionUpdate.updatedSection(updatedRows:
+                TableDataContainerUpdate.deleted(indexPaths: [IndexPath(row: atRow, section: rawSection)]))
+        }
+    }
+
+    public func clearItems() -> TableDataSectionUpdate {
         sections.removeAll()
+        return TableDataSectionUpdate.empty // TODO make me..
     }
 
     // MARK: section modifiers
-    public func clear() {
-        clearItems()
+    public func clear() -> TableDataSectionUpdate {
+        let result = clearItems()
         clearHeaders()
+        return result
     }
 
     /**
      * removes the given section (iff there) and returns the optional raw section index
      */
-    public func remove(section: Int) -> (items: [GenericTableItem], rawSectionIndex: Int?) {
+    public func remove(section: Int) -> TableDataSectionUpdate {
         removeHeader(forSection: section)
-        let rawSection = getRawSection(forSection: section)
-        return (removeItemsIn(section: section), rawSection)
+        return removeItemsIn(section: section)
     }
 
     /**
@@ -122,22 +174,20 @@ public class TableDataContainer: NSObject,
      * if the content is empty, the section is removed.
      * if the section did not exists, then the section is created
      */
-    public func setSection(items: [GenericTableItem], forSection: Int)
-        -> (result: TableDataContainerUpdate, deleteIndex: Int? ) {
+    public func setSection(items: [GenericTableItem], forSection: Int) -> TableDataSectionUpdate {
         if items.isEmpty {
             //we are going to remove the section.
-            let (_, index) = remove(section: forSection)
-            return (TableDataContainerUpdate.empty, index)
+            return removeItemsIn(section: forSection)
         }
         let oldSectionContent = sections.getWithRawIndex(forIndex: forSection) ?? ([], -1)
         if oldSectionContent.item.isEmpty {
             //we added a new section
-            return (add(items: items, forSection: forSection), nil)
+            return add(items: items, forSection: forSection)
         }
         //we have "overlap". compute diff.
         let diff = computeDiff(newItems: items, oldItems: oldSectionContent.item, forSection: oldSectionContent.rawIndex)
         sections.set(value: items, forIndex: forSection)
-        return (diff, nil)
+        return TableDataSectionUpdate.updatedSection(updatedRows: diff)
     }
 
     private func computeDiff(newItems: [GenericTableItem],

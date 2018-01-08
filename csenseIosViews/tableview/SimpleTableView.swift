@@ -8,6 +8,7 @@
 
 import Foundation
 import csenseSwift
+import csenseIosBase
 import UIKit
 
 /**
@@ -94,25 +95,21 @@ open class SimpleTableView: UITableView {
     }
 
     public func add(items: [GenericTableItem], forSection: Int) {
-        if items.isEmpty {
-            return
-        }
         items.forEach(addNibFromGenericTableItem)
         applyResultUpdate(update: data.add(items: items, forSection: forSection))
     }
 
     public func remove(section: Int) {
+        //remove all nibs
+        data.rowsInSection(forSection: section)?.forEach(removeNibFromGenericTableItem)
         let removed = data.remove(section: section)
-        removed.items.forEach(removeNibFromGenericTableItem)
-        removed.rawSectionIndex.useSafe { (rawSection: Int) in
-            deleteSections(IndexSet(integer: rawSection), with: deletionAnimation)
-        }
+        applyResultUpdate(update: removed)
     }
 
     public func clear() {
         nibRegistrator.clear()
         let numberBefore = numberOfSections
-        data.clear()
+        applyResultUpdate(update: data.clear()) //TODO prettify this.. ??
         //if we had data, then remove all the deleted sections.
         if numberBefore.isPositive {
             let sectionIndexes = IndexSet(0 ... numberOfSections - 1)
@@ -125,16 +122,10 @@ open class SimpleTableView: UITableView {
     }
 
     public func set(items: [GenericTableItem], forSection: Int) {
-
-        data.rowsInSection(forSection: forSection)?.forEach(removeNibFromGenericTableItem)
-        items.forEach(addNibFromGenericTableItem)
+        //update nibs.
+        updateNibs(old: data.rowsInSection(forSection: forSection), new: items)
         let update = data.setSection(items: items, forSection: forSection)
-        //if the deleIndex is set, then we are deleting the section
-        update.deleteIndex.useSafe { (value)  in
-            deleteSections(IndexSet(integer: value), with: deletionAnimation)
-        }
-        //alternative, there are "updates"
-        applyResultUpdate(update: update.result)
+        applyResultUpdate(update: update)
     }
 
     public func setHeader(header: GenericTableHeaderItem, forSection: Int) {
@@ -147,18 +138,36 @@ open class SimpleTableView: UITableView {
 
     // MARK: data and nib registration
 
-    private func applyResultUpdate(update: TableDataContainerUpdate) {
-        beginUpdates()
-        if update.removed.isNotEmpty {
-            deleteRows(at: update.removed, with: deletionAnimation)
+    private func applyResultUpdate(update: TableDataSectionUpdate) {
+        if let safeDelete = update.deletedSectionAtRawIndex {
+            deleteSections(IndexSet(integer: safeDelete), with: deletionAnimation)
+            return
+        } else if let safeCreate = update.createdSectionAtRawIndex {
+            insertSections(IndexSet(integer: safeCreate), with: insertionAnimation)
+        } else if update.updatedRows.isNotEmpty() {
+            let updatedRows = update.updatedRows
+            beginUpdates()
+            if updatedRows.removed.isNotEmpty {
+                deleteRows(at: updatedRows.removed, with: deletionAnimation)
+            }
+            if updatedRows.inserted.isNotEmpty {
+                insertRows(at: updatedRows.inserted, with: insertionAnimation)
+            }
+            if updatedRows.updated.isNotEmpty {
+                reloadRows(at: updatedRows.updated, with: reloadingAnimation)
+            }
+            endUpdates()
+        } else {
+            Logger.shared.logWarning(message: "did not perform any updates.")
         }
-        if update.inserted.isNotEmpty {
-            insertRows(at: update.inserted, with: insertionAnimation)
-        }
-        if update.updated.isNotEmpty {
-            reloadRows(at: update.updated, with: reloadingAnimation)
-        }
-        endUpdates()
+    }
+
+    /**
+     * Handles removing some items and inserting new once regarding the nib registration.
+     */
+    private func updateNibs(old: [GenericTableItem]?, new: [GenericTableItem]) {
+        old?.forEach(removeNibFromGenericTableItem)
+        new.forEach(addNibFromGenericTableItem)
     }
 
     private func removeNibFromGenericTableItem(item: GenericTableItem) {
