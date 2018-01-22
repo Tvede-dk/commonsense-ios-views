@@ -35,6 +35,7 @@ open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell 
 
     private let renderFunction: (T) -> Void
 
+    private var updateFunction: Function<Bool>?
     /**
      *
      */
@@ -67,16 +68,16 @@ open class GenericTableItemRender<T>: GenericTableItem where T: UITableViewCell 
 
     /**
      * Called from a given cell, tells us that we are to be updated. (we have changed)
+     * if shouldReloadCell is true, then the update will be though "reloadCells(at:"
+     * if shouldReloadCell is false, the view will be extracted  and called with configureFor instead (no cell reloading.)
      */
-    public func update() {
-        updateFunction?()
+    public func update(shouldReloadCell: Bool = false) {
+        updateFunction?(shouldReloadCell)
     }
 
-    public func setUpdateFunction(callback: @escaping EmptyFunction) {
+    public func setUpdateFunction(callback: @escaping Function<Bool>) {
         updateFunction = callback
     }
-
-    private var updateFunction: EmptyFunction?
 
     /**
      *

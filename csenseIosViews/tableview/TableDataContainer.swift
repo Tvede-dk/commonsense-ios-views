@@ -303,16 +303,43 @@ public class TableDataContainer: NSObject,
 
     private func renderItem(tableView: UITableView, at: IndexPath) -> UITableViewCell {
         let optItem = getSectionRowByIndex(at: at)
-        guard let safeItem = optItem else {
+        guard let safeItem: GenericTableItem = optItem else {
             return getBadTableViewCell(tableView: tableView, at: at)
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: safeItem.getReuseIdentifier(),
                 for: at)
         safeItem.renderFor(cell: cell)
-        let updater: EmptyFunction = { [weak tableView] in
-            tableView?.reloadRows(at: [at], with: .automatic)
+        let updater: Function<Bool> = { [weak tableView, weak self] (shouldReloadCell: Bool) in
+            guard let safeSelf = self, let tableView = tableView  else {
+                return
+            }
+            safeSelf.updateView(tableView: tableView, shouldReloadCell: shouldReloadCell, index: at)
         }
         safeItem.setUpdateFunction(callback: updater)
         return cell
+    }
+
+    private func updateView(tableView: UITableView, shouldReloadCell: Bool, index: IndexPath) {
+        if shouldReloadCell {
+            tableView.reloadRows(at: [index], with: .automatic)
+            return
+        }
+        //reload without reloading the row.
+        let containsIndex = tableView.indexPathsForVisibleRows?.contains(index) ?? false
+        if containsIndex {
+            //then we are to update it
+            let optItem = self.getSectionRowByIndex(at: index)
+            guard let safeItem = optItem,
+                let safeCell = tableView.cellForRow(at: index)  else {
+                    Logger.shared.logWarning(message: "Could not get item or view, thus the update call turned invalid;skippping.")
+                    return
+            }
+            safeItem.renderFor(cell: safeCell)
+        } else {
+            //we have no use of calling update, so skip it.
+            Logger.shared.logWarning(message: "updating cell that is not visible and then calling update with" +
+                "\"shouldReloadCell\"=true is wrong. the view did not get created and the renderFor did not get called.")
+        }
+
     }
 }

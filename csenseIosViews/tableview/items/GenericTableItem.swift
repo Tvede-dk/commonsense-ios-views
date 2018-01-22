@@ -7,11 +7,32 @@ import Foundation
 import csenseSwift
 
 public protocol GenericTableItem {
+    /**
+     *
+     */
     func getNib() -> UINib
+    /**
+     *
+     */
     func getReuseIdentifier() -> String
+    /**
+     *
+     */
     func renderFor(cell: UITableViewCell)
+    /**
+     *
+     */
     func onTappedCalled()
+    /**
+     *
+     */
     func getEstimatedHeight() -> CGFloat?
+    /**
+     *
+     */
     func getCustomHeight() -> CGFloat?
-    func setUpdateFunction(callback:@escaping EmptyFunction)
+    /**
+     * 
+     */
+    func setUpdateFunction(callback:@escaping Function<Bool>)
 }

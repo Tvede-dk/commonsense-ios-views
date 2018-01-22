@@ -28,7 +28,7 @@ import UIKit
 open class SimpleTableView: UITableView {
 
     // MARK: public properties
-    
+
     /**
      * animation when inserting cell(s)
      */
@@ -38,7 +38,7 @@ open class SimpleTableView: UITableView {
      * animation when deleting cell(s)
      */
     public var deletionAnimation: UITableViewRowAnimation = UITableViewRowAnimation.automatic
-    
+
     /**
      * animation when reloading cell(s)
      */
@@ -46,7 +46,7 @@ open class SimpleTableView: UITableView {
 
     // MARK: private properties
     private let nibRegistrator: NibRegistrator = NibRegistrator()
-    
+
     /**
      * The data storage. also the guy that does most of the heavy section indexing / lifting.
      */
@@ -148,7 +148,7 @@ open class SimpleTableView: UITableView {
     /*public func setFooter(footer : GenericTableHeaderItem, forSection: Int){
         data.setFooter(footer, forSection: forSection)
     }*/
-    
+
     // MARK: visibility handling
 /*
     public func showSection(forSection: Int) {
@@ -187,7 +187,6 @@ open class SimpleTableView: UITableView {
             endUpdates()
         } else {
             //Logger.shared.logDebug(message: "did not perform any updates.")
-            
         }
     }
 
